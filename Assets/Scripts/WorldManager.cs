@@ -64,7 +64,7 @@ public class WorldManager : MonoBehaviour
         var _container = cont.AddComponent<Container>();
         container.Add(_container);
         _container.Initialize(worldMaterial, Vector3.zero);
-
+        _container.ContainerPosition = new Vector3(xx,0,zz);
         for (int x = 0; x < 10; x++)
         {
             for (int z = 0; z < 10; z++)
@@ -75,11 +75,13 @@ public class WorldManager : MonoBehaviour
                     if (y < 2)
                     {
                         _container[new Vector3(x + (10 * xx), y, z + (10 * zz))] = new Voxel() { Id = 1 };
+                        
 
                     }
                     else
                     {
                         _container[new Vector3(x + (10 * xx), y, z + (10 * zz))] = new Voxel() { Id = 0 };
+                        
                     }
                 }
 
@@ -112,21 +114,26 @@ public class WorldManager : MonoBehaviour
     [ContextMenu("ReloadGrid")]
     public void ReloadGrid()
     {
-        int count = 0;
+        
         for (int x = 0; x < GridSize.x; x++)
         {
             for (int y = 0; y < GridSize.y; y++)
             {
-                count++;
-                if (container.Count - 1 >= count)
+                Container cont = null;
+                foreach(Container c in container)
                 {
-                    y++;
-                    continue;
+                    if(c.ContainerPosition.x == x && c.ContainerPosition.z == y )
+                    {
+                        cont= c;
+                    }
                 }
-                else
+                if( cont == null)
                 {
+
                     GenerateDefaultTerrain(x, y);
                 }
+                
+                
             }
         }
     }
