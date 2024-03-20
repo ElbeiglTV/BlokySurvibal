@@ -1,17 +1,18 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldManager : MonoBehaviour
 {
     public static WorldManager instance;
 
+    public Vector2 GridSize;
 
     public Material worldMaterial;
-    public Container container;
+    public List<Container> container;
 
     public VoxelColor[] WorldColors;
     public VoxelTexture[] WorldTextures;
-  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +23,9 @@ public class WorldManager : MonoBehaviour
     {
         GameObject cont = new GameObject("Container");
         cont.transform.parent = transform;
-        container = cont.AddComponent<Container>();
-        container.Initialize(worldMaterial, Vector3.zero);
+        var _container = cont.AddComponent<Container>();
+        container.Add(_container);
+        _container.Initialize(worldMaterial, Vector3.zero);
 
         for (int x = 0; x < 10; x++)
         {
@@ -34,12 +36,12 @@ public class WorldManager : MonoBehaviour
                 {
                     if (y < 2)
                     {
-                        container[new Vector3(x, y, z)] = new Voxel() { Id = 1 };
+                        _container[new Vector3(x, y, z)] = new Voxel() { Id = 1 };
 
                     }
                     else
                     {
-                        container[new Vector3(x, y, z)] = new Voxel() { Id = 0 };
+                        _container[new Vector3(x, y, z)] = new Voxel() { Id = 0 };
                     }
                 }
 
@@ -51,43 +53,100 @@ public class WorldManager : MonoBehaviour
 
         }
 
-        container.GenerateMesh();
-        container.UploadMesh();
+        _container.GenerateMesh();
+        _container.UploadMesh();
     }
+    //sobrecarga
+    public void GenerateDefaultTerrain(int xx, int zz)
+    {
+        GameObject cont = new GameObject("Container");
+        cont.transform.parent = transform;
+        var _container = cont.AddComponent<Container>();
+        container.Add(_container);
+        _container.Initialize(worldMaterial, Vector3.zero);
+
+        for (int x = 0; x < 10; x++)
+        {
+            for (int z = 0; z < 10; z++)
+            {
+                int heigth = 20;
+                for (int y = 0; y < heigth; y++)
+                {
+                    if (y < 2)
+                    {
+                        _container[new Vector3(x + (10 * xx), y, z + (10 * zz))] = new Voxel() { Id = 1 };
+
+                    }
+                    else
+                    {
+                        _container[new Vector3(x + (10 * xx), y, z + (10 * zz))] = new Voxel() { Id = 0 };
+                    }
+                }
+
+
+
+
+            }
+
+
+        }
+
+        _container.GenerateMesh();
+        _container.UploadMesh();
+    }
+    [ContextMenu("GenerateGrid")]
+    public void GenerateGrid()
+    {
+        for (int x = 0; x < GridSize.x; x++)
+        {
+            for (int y = 0; y < GridSize.y; y++)
+            {
+
+                GenerateDefaultTerrain(x, y);
+
+            }
+        }
+    }
+
+
+    [ContextMenu("ReloadGrid")]
+    public void ReloadGrid()
+    {
+        int count = 0;
+        for (int x = 0; x < GridSize.x; x++)
+        {
+            for (int y = 0; y < GridSize.y; y++)
+            {
+                count++;
+                if (container.Count - 1 >= count)
+                {
+                    y++;
+                    continue;
+                }
+                else
+                {
+                    GenerateDefaultTerrain(x, y);
+                }
+            }
+        }
+    }
+
+
     [ContextMenu("ReloadTerrain")]
     public void ReloadTerrain()
     {
-        container.GenerateMesh();
-        ReloadTextures();
-        container.UploadMesh();
+        foreach (Container c in container)
+        {
+            c.GenerateMesh();
+            c.UploadMesh();
+        }
+
     }
-    public void ReloadTextures()
-    {
-        worldMaterial.SetTexture("_Texture2DArray", GenerateTextureArray());
-    }
+
     private void OnValidate()
     {
         instance = this;
     }
-    public Texture2DArray GenerateTextureArray() 
-    { 
-      if(WorldTextures.Length > 0)
-        {
-            Texture2D tex = WorldTextures[0].texture;
-            Texture2DArray texArrayAlbedo = new Texture2DArray(tex.width, tex.height, WorldTextures.Length, tex.format, tex.mipmapCount > 1);
-            texArrayAlbedo.anisoLevel = tex.anisoLevel;
-            texArrayAlbedo.filterMode = tex.filterMode;
-            texArrayAlbedo.wrapMode = tex.wrapMode;
 
-            for(int i = 0; i < WorldTextures.Length; i++)
-            {
-                Graphics.CopyTexture(WorldTextures[i].texture, 0, 0, texArrayAlbedo, i, 0);
-            } 
-            return texArrayAlbedo;
-        }
-      return null;
-    
-    
-    }
 
 }
