@@ -85,6 +85,30 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture01:
+        m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture02:
+        m_Texture: {fileID: 2800000, guid: 4e3df79f0d29a9e458178bf2a7b835a6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture03:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture04:
+        m_Texture: {fileID: 10904, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture05:
+        m_Texture: {fileID: 2800000, guid: 727a75301c3d24613a3ebcec4a24c2c8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture06:
+        m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2D:
         m_Texture: {fileID: 2800000, guid: 4e3df79f0d29a9e458178bf2a7b835a6, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -121,6 +145,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _Fuzziness: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -129,6 +154,7 @@ Material:
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Range: 0.205
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -142,7 +168,7 @@ Material:
     m_Colors:
     - _Back: {r: 0.67641205, g: 0, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.54509807, g: 1, b: 0, a: 0}
     - _Down: {r: 0, g: 0.19188637, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Front: {r: 1, g: 0, b: 0.56150097, a: 0}
@@ -153,4 +179,10 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Top: {r: 0, g: 1, b: 0.01039314, a: 0}
     - _amarillo: {r: 0.18177521, g: 1, b: 0, a: 0}
+    - _colorMask01: {r: 0.47058824, g: 0, b: 0, a: 0}
+    - _colorMask02: {r: 0, g: 0.47058824, b: 0, a: 0}
+    - _colorMask03: {r: 0, g: 0, b: 0.47058824, a: 0}
+    - _colorMask04: {r: 0.5568628, g: 0.5686275, b: 0, a: 0}
+    - _colorMask05: {r: 0, g: 0.6117647, b: 0.6117647, a: 0}
+    - _colorMask06: {r: 0, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
