@@ -28,7 +28,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(0, 0, -0.5f), Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp + new Vector3(0, 0, -1), new Voxel() { Id = VoxelButonsVar.BlockID });
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                     else
@@ -37,7 +37,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(0, 0, -0.5f), Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp, Container.emptyVoxel);
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                 }
@@ -50,7 +50,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(0, 0, +0.5f), Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp + new Vector3(0, 0, 1), new Voxel() { Id = VoxelButonsVar.BlockID });
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                     else
@@ -58,7 +58,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(0, 0, +0.5f), Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp, Container.emptyVoxel);
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                 }
@@ -72,7 +72,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(-0.5f, 0, 0), Quaternion.Euler(0, 90, 0), 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp + new Vector3(-1, 0, 0), new Voxel() { Id = VoxelButonsVar.BlockID });
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                     else
@@ -80,7 +80,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(-0.5f, 0, 0), Quaternion.Euler(0, 90, 0), 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp, Container.emptyVoxel);
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                 }
@@ -92,7 +92,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(0.5f, 0, 0), Quaternion.Euler(0, 90, 0), 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp + new Vector3(1, 0, 0), new Voxel() { Id = VoxelButonsVar.BlockID });
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                     else
@@ -101,7 +101,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(0.5f, 0, 0), Quaternion.Euler(0, 90, 0), 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp, Container.emptyVoxel);
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                 }
@@ -115,7 +115,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(0, -0.5f, 0), Quaternion.Euler(90, 0, 0), 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp + new Vector3(0, -1, 0), new Voxel() { Id = VoxelButonsVar.BlockID });
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                     else
@@ -124,7 +124,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(0, -0.5f, 0), Quaternion.Euler(90, 0, 0), 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp, Container.emptyVoxel);
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                 }
@@ -139,12 +139,12 @@ public class ContainerEditor : Editor
                             {
                                 Debug.Log("set");
                                 container.data.Set(kvp + new Vector3(0, 1, 0), new Voxel() { Id = VoxelButonsVar.BlockID });
-                                manager.ReloadTerrain();
+                                ReloadChunck(container);
                             }
                             else
                             {
                                 container.data.Add(kvp + new Vector3(0, 1, 0), new Voxel() { Id = VoxelButonsVar.BlockID });
-                                manager.ReloadTerrain();
+                                ReloadChunck(container);
                             }
                         }
                     }
@@ -154,7 +154,7 @@ public class ContainerEditor : Editor
                         if (Handles.Button(voxelCenter + new Vector3(0, 0.5f, 0), Quaternion.Euler(90, 0, 0), 0.5f, 0.5f, Handles.RectangleHandleCap))
                         {
                             container.data.Set(kvp, Container.emptyVoxel);
-                            manager.ReloadTerrain();
+                            ReloadChunck(container);
                         }
                     }
                 }
@@ -164,6 +164,11 @@ public class ContainerEditor : Editor
 
         }
 
+    }
+    public void ReloadChunck(Container c)
+    {
+        c.GenerateMesh();
+        c.UploadMesh();
     }
     static readonly Vector3[] voxelFaceChecks = new Vector3[6]
     {

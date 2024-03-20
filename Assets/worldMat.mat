@@ -117,6 +117,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WoodLog:
+        m_Texture: {fileID: 2800000, guid: 98d9a7cf77fbe2f419f1cf9abbd17f25, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WoodLog2:
+        m_Texture: {fileID: 2800000, guid: 1c18557d3017f9b499dbc6a6043c0b1f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
