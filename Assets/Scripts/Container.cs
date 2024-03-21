@@ -49,7 +49,7 @@ public class Container : MonoBehaviour
         VoxelColor voxelColor;
         Color voxelColorAlpha;
         Vector2 voxelSmootness;
-
+        
         foreach (var kvp in data.Keys)
         {
             if (data.Get(kvp).Id == 0) continue;
@@ -61,48 +61,51 @@ public class Container : MonoBehaviour
             voxelColorAlpha = voxelColor.color;
             voxelColorAlpha.a = 1;
             voxelSmootness = new Vector2(voxelColor.metallic, voxelColor.Smoothness);
-
-
+            
+           
 
 
             for (int i = 0; i < 6; i++)
             {
                 if (this[blockPos + voxelFaceChecks[i]].isSolid) continue;
                 
-                if (blockPos.x == 0 && i == 0)
+                
+                if (blockPos.x % 10 == 0 && i == 2)
                 {
-                    //x
-                    Debug.Log("BlockPos.x = 0");
+
+                    //-x
+                    
+                    if (WorldManager.instance.container.ContainsKey(ContainerPosition + ChunckCheck[2]))
+                    {
+                        
+                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[2]).data.ContainsKey(new Vector3(blockPos.x -1, blockPos.y, blockPos.z)))
+                        {
+
+                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[2]).data.Get(new Vector3(blockPos.x - 1, blockPos.y, blockPos.z)).isSolid)
+                            {
+                            
+                                continue;
+                            }
+                        }
+                       
+
+                    }
+                    
+                }
+                //x
+                if (blockPos.x % 10 == 9 && i == 3)
+                {
+                   
                     if (WorldManager.instance.container.ContainsKey(ContainerPosition + ChunckCheck[3]))
                     {
                         Vector3 v = ContainerPosition + ChunckCheck[3];
-                        Debug.Log("chunk :" + v + ": exist");
-                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[3]).data.ContainsKey(new Vector3(9, blockPos.y, blockPos.z)))
+                        
+                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[3]).data.ContainsKey(new Vector3(blockPos.x + 1, blockPos.y, blockPos.z )))
                         {
-
-                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[3]).data.Get(new Vector3(9, blockPos.y, blockPos.z)).isSolid)
+                           
+                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[3]).data.Get(new Vector3(blockPos.x + 1, blockPos.y, blockPos.z)).isSolid)
                             {
-
-                                continue;
-                            }
-                        }
-
-                    }
-                }
-                //x
-                if (blockPos.x == 9 && i == 1)
-                {
-                    Debug.Log("BlockPos.x = 9");
-                    if (WorldManager.instance.container.ContainsKey(ContainerPosition + ChunckCheck[2]))
-                    {
-                        Vector3 v = ContainerPosition + ChunckCheck[2];
-                        Debug.Log("chunk :" + v + ": exist");
-                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[2]).data.ContainsKey(new Vector3(0, blockPos.y, blockPos.z)))
-                        {
-
-                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[2]).data.Get(new Vector3(0, blockPos.y, blockPos.z)).isSolid)
-                            {
-
+                                
                                 continue;
                             }
                         }
@@ -110,43 +113,44 @@ public class Container : MonoBehaviour
                     }
                 }
                 //z
-                if (blockPos.z == 0 && i == 2)
+                if (blockPos.z % 10 == 0 && i ==  0)
                 {
-                    Debug.Log("BlockPos.z = 9");
+                   
                     if (WorldManager.instance.container.ContainsKey(ContainerPosition + ChunckCheck[0]))
                     {
                         Vector3 v = ContainerPosition + ChunckCheck[0];
-                        Debug.Log("chunk :" + v + ": exist");
-                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[0]).data.ContainsKey(new Vector3(blockPos.x, blockPos.y, 9)))
+                        
+                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[0]).data.ContainsKey(new Vector3(blockPos.x, blockPos.y, blockPos.z - 1)))
                         {
 
-                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[0]).data.Get(new Vector3(blockPos.x, blockPos.y, 9)).isSolid)
+                           if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[0]).data.Get(new Vector3(blockPos.x, blockPos.y, blockPos.z - 1)).isSolid)
                             {
-
+                               
                                 continue;
                             }
                         }
+                        
 
                     }
                 }
-                //z
-                if (blockPos.z == 9 && i == 3)
+                //+z = 1 
+                if (blockPos.z % 10 == 9 && i == 1)
                 {
-                    Debug.Log("BlockPos.z = 0");
+                   
                     if (WorldManager.instance.container.ContainsKey(ContainerPosition + ChunckCheck[1]))
                     {
                         Vector3 v = ContainerPosition + ChunckCheck[1];
-                        Debug.Log("chunk :" + v + ": exist");
-                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[1]).data.ContainsKey(new Vector3(blockPos.x, blockPos.y, 0)))
+                        
+                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[1]).data.ContainsKey(new Vector3(blockPos.x, blockPos.y, blockPos.z +1)))
                         {
 
-                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[1]).data.Get(new Vector3(blockPos.x, blockPos.y, 0)).isSolid)
+                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[1]).data.Get(new Vector3(blockPos.x, blockPos.y , blockPos.z +1)).isSolid)
                             {
 
                                 continue;
                             }
                         }
-
+                       
                     }
                 }
 
@@ -184,7 +188,12 @@ public class Container : MonoBehaviour
             meshCollider.sharedMesh = meshData.mesh;
         }
     }
-
+    [ContextMenu("ReloadChunk")]
+    public void ReloadChunck()
+    {
+        GenerateMesh();
+        UploadMesh();
+    }
     public Voxel this[Vector3 index]
     {
         get
