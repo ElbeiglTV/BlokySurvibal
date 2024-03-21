@@ -30,8 +30,9 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -117,6 +118,62 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2D_Array:
+        m_Texture: {fileID: 18700000, guid: 692b5d681d72e6f4c9308838b92977af, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2D_Array_Test:
+        m_Texture: {fileID: 18700000, guid: d28b941d97799ac4b8d6e7e31ec2998d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_1_Sides:
+        m_Texture: {fileID: 2800000, guid: 692b5d681d72e6f4c9308838b92977af, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_1_Top:
+        m_Texture: {fileID: 2800000, guid: 692b5d681d72e6f4c9308838b92977af, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_2_Sides:
+        m_Texture: {fileID: 2800000, guid: dbf488fe164e77f49b5a066351b323be, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_2_Top:
+        m_Texture: {fileID: 2800000, guid: dbf488fe164e77f49b5a066351b323be, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_3_Sides:
+        m_Texture: {fileID: 2800000, guid: 98d9a7cf77fbe2f419f1cf9abbd17f25, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_3_Top:
+        m_Texture: {fileID: 2800000, guid: 1c18557d3017f9b499dbc6a6043c0b1f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_4_Sides:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_4_Top:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_5_Sides:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_5_Top:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_6_Sides:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture_6_Top:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _WoodLog:
         m_Texture: {fileID: 2800000, guid: 98d9a7cf77fbe2f419f1cf9abbd17f25, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -141,9 +198,11 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _Ambient_Occlusion: 0.7
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
+    - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -162,7 +221,7 @@ Material:
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Range: 0.208
+    - _Range: 0.2
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -170,13 +229,25 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _Texture_Array_Index_1: 2
+    - _Texture_Array_Index_2: 1
+    - _Texture_Array_Index_2_1: 3
+    - _Texture_Array_Index_3: 0
     - _WorkflowMode: 1
+    - _ZTest: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     - _step: 0.5
     m_Colors:
     - _Back: {r: 0.67641205, g: 0, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.54509807, g: 1, b: 0, a: 0}
+    - _Color_Mask_1: {r: 1, g: 0, b: 0, a: 0}
+    - _Color_Mask_2: {r: 0.50980395, g: 0, b: 0, a: 0}
+    - _Color_Mask_3: {r: 0.83137256, g: 0.11764706, b: 0, a: 0}
+    - _Color_Mask_4: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_Mask_5: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_Mask_6: {r: 0, g: 0, b: 0, a: 0}
     - _Down: {r: 0, g: 0.19188637, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Front: {r: 1, g: 0, b: 0.56150097, a: 0}
