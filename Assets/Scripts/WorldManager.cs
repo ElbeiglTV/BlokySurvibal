@@ -8,7 +8,7 @@ public class WorldManager : MonoBehaviour
     public Vector2 GridSize;
 
     public Material worldMaterial;
-    public List<Container> container;
+    public SerialisedDictionary<Vector3,Container> container;
 
     public VoxelColor[] WorldColors;
     public VoxelTexture[] WorldTextures;
@@ -24,7 +24,7 @@ public class WorldManager : MonoBehaviour
         GameObject cont = new GameObject("Container");
         cont.transform.parent = transform;
         var _container = cont.AddComponent<Container>();
-        container.Add(_container);
+        container.Add(new Vector3(0,0,0),_container);
         _container.Initialize(worldMaterial, Vector3.zero);
 
         for (int x = 0; x < 10; x++)
@@ -62,7 +62,7 @@ public class WorldManager : MonoBehaviour
         GameObject cont = new GameObject("Container");
         cont.transform.parent = transform;
         var _container = cont.AddComponent<Container>();
-        container.Add(_container);
+        container.Add(new Vector3(xx, 0,zz), _container);
         _container.Initialize(worldMaterial, Vector3.zero);
         _container.ContainerPosition = new Vector3(xx,0,zz);
         for (int x = 0; x < 10; x++)
@@ -120,7 +120,7 @@ public class WorldManager : MonoBehaviour
             for (int y = 0; y < GridSize.y; y++)
             {
                 Container cont = null;
-                foreach(Container c in container)
+                foreach(Container c in container.Values)
                 {
                     if(c.ContainerPosition.x == x && c.ContainerPosition.z == y )
                     {
@@ -142,7 +142,7 @@ public class WorldManager : MonoBehaviour
     [ContextMenu("ReloadTerrain")]
     public void ReloadTerrain()
     {
-        foreach (Container c in container)
+        foreach (Container c in container.Values)
         {
             c.GenerateMesh();
             c.UploadMesh();
