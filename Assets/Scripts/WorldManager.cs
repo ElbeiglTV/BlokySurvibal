@@ -99,6 +99,7 @@ public class WorldManager : MonoBehaviour
     [ContextMenu("GenerateGrid")]
     public void GenerateGrid()
     {
+        container.Clear();
         for (int x = 0; x < GridSize.x; x++)
         {
             for (int y = 0; y < GridSize.y; y++)
