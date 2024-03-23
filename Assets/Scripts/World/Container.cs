@@ -1,16 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshCollider))]
 public class Container : MonoBehaviour
 {
-    public Vector3 ContainerPosition;
+    private void Start()
+    {
+        UpdateManager.OnFixedUpdate += ReloadColorsWithCoolDown;
+    }
 
+
+    public Vector3 ContainerPosition;
+    public float ReloadCoolDown = 0;
 
     public SerialisedDictionary<Vector3, Voxel> data;
-    MeshData meshData = new MeshData();
+    public List<Voxel> solidData = new List<Voxel>();
+    public MeshData meshData = new MeshData();
 
     MeshCollider meshCollider;
     MeshFilter meshFilter;
@@ -37,6 +45,7 @@ public class Container : MonoBehaviour
     public void GenerateMesh()
     {
         meshData.ClearData();
+        solidData.Clear();
 
         Vector3 blockPos;
         Voxel block;
@@ -53,15 +62,16 @@ public class Container : MonoBehaviour
         foreach (var kvp in data.Keys)
         {
             if (data.Get(kvp).Id == 0) continue;
-
             blockPos = kvp;
             block = data.Get(kvp);
+            block.WorldPos = kvp;
+            solidData.Add(block);
 
 
             voxelColor = WorldManager.instance.WorldColors[block.Id - 1];
 
             voxelColorAlpha = voxelColor.color;
-            
+
             if (block.isTransparent)
             {
 
@@ -187,6 +197,183 @@ public class Container : MonoBehaviour
             }
         }
     }
+    public void ReloadColorsWithCoolDown()
+    {
+
+        if (ReloadCoolDown < 1.5f)
+        {
+            DefaultColors();
+            ReloadColors();
+            ReloadCoolDown = 1.5f;
+        }
+        else if (ReloadCoolDown > 1.5f ) 
+        {
+            ReloadCoolDown -= Time.fixedDeltaTime;
+        }
+        if (ReloadCoolDown >= 2)
+        {
+            ReloadColors();
+        }
+    }
+    public void DefaultColors()
+    {
+        List<Voxel> TransparencyData = new List<Voxel>();
+        foreach (Voxel v in solidData)
+        {
+            var vox = v;
+            vox.isTransparent = false;
+            TransparencyData.Add(vox);
+
+        }
+        solidData=TransparencyData;
+    }
+    public void ReloadColors()
+    {
+        meshData.colors = new List<Color>();
+        meshData.colors.Clear();
+        meshData.mesh.Clear();
+        Vector3 blockPos;
+        Voxel block;
+
+        VoxelColor voxelColor;
+        Color voxelColorAlpha;
+        
+        
+        
+        foreach (var kvp in solidData)
+        {
+            
+            blockPos = kvp.WorldPos;
+            block = kvp;
+            
+
+            voxelColor = WorldManager.instance.WorldColors[block.Id - 1];
+
+            voxelColorAlpha = voxelColor.color;
+
+            if (block.isTransparent)
+            {
+
+                voxelColorAlpha.a = 0.3f;
+            }
+            else
+            {
+                voxelColorAlpha.a = 1;
+
+            }
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (this[blockPos + voxelFaceChecks[i]].isSolid) continue;
+
+
+                if (blockPos.x % 10 == 0 && i == 2)
+                {
+
+                    //-x
+
+                    if (WorldManager.instance.container.ContainsKey(ContainerPosition + ChunckCheck[2]))
+                    {
+
+                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[2]).data.ContainsKey(new Vector3(blockPos.x - 1, blockPos.y, blockPos.z)))
+                        {
+
+                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[2]).data.Get(new Vector3(blockPos.x - 1, blockPos.y, blockPos.z)).isSolid)
+                            {
+
+                                continue;
+                            }
+                        }
+
+
+                    }
+
+                }
+                //x
+                if (blockPos.x % 10 == 9 && i == 3)
+                {
+
+                    if (WorldManager.instance.container.ContainsKey(ContainerPosition + ChunckCheck[3]))
+                    {
+                        Vector3 v = ContainerPosition + ChunckCheck[3];
+
+                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[3]).data.ContainsKey(new Vector3(blockPos.x + 1, blockPos.y, blockPos.z)))
+                        {
+
+                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[3]).data.Get(new Vector3(blockPos.x + 1, blockPos.y, blockPos.z)).isSolid)
+                            {
+
+                                continue;
+                            }
+                        }
+
+                    }
+                }
+                //z
+                if (blockPos.z % 10 == 0 && i == 0)
+                {
+
+                    if (WorldManager.instance.container.ContainsKey(ContainerPosition + ChunckCheck[0]))
+                    {
+                        Vector3 v = ContainerPosition + ChunckCheck[0];
+
+                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[0]).data.ContainsKey(new Vector3(blockPos.x, blockPos.y, blockPos.z - 1)))
+                        {
+
+                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[0]).data.Get(new Vector3(blockPos.x, blockPos.y, blockPos.z - 1)).isSolid)
+                            {
+
+                                continue;
+                            }
+                        }
+
+
+                    }
+                }
+                //+z = 1 
+                if (blockPos.z % 10 == 9 && i == 1)
+                {
+
+                    if (WorldManager.instance.container.ContainsKey(ContainerPosition + ChunckCheck[1]))
+                    {
+                        Vector3 v = ContainerPosition + ChunckCheck[1];
+
+                        if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[1]).data.ContainsKey(new Vector3(blockPos.x, blockPos.y, blockPos.z + 1)))
+                        {
+
+                            if (WorldManager.instance.container.Get(ContainerPosition + ChunckCheck[1]).data.Get(new Vector3(blockPos.x, blockPos.y, blockPos.z + 1)).isSolid)
+                            {
+
+                                continue;
+                            }
+                        }
+
+                    }
+                }
+
+                
+                for (int j = 0; j < 6; j++)
+                {
+                   
+                    meshData.colors.Add(voxelColorAlpha);
+                    
+                }
+            }
+           
+
+
+
+
+        }
+        UploadMesh();
+
+
+        
+
+        
+        
+    }
+
     public void UploadMesh()
     {
         meshData.UploadMesh();
@@ -230,7 +417,7 @@ public class Container : MonoBehaviour
 
     #region MeshData
 
-
+    [System.Serializable]
     public struct MeshData
     {
         public Mesh mesh;

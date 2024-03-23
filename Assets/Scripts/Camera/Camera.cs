@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +8,9 @@ public class Camera : MonoBehaviour
     public Vector3 offset;
     public Vector3 rotation;
     public float radius;
+    int _iterations = 0;
+   
+
 
 
 
@@ -30,36 +32,55 @@ public class Camera : MonoBehaviour
 
     void ManagedFixedUpdate()
     {
-        if(Physics.Linecast(transform.position,target.position,out RaycastHit hitInfo,terrainMask))
+        TransparencyControl(Vector3.zero);
+       
+
+    }
+
+    void TransparencyControl(Vector3 rayOffSet)
+    {
+        _iterations++;
+
+        if (_iterations >= 10)
         {
-            
-           Container c = hitInfo.collider.GetComponent<Container>();
-                
-                
-                    Debug.Log("Container" + c.ContainerPosition);
-                    foreach (Vector3 v in c.data.Keys)
+
+
+            if (Physics.Linecast(transform.position+rayOffSet, target.position, out RaycastHit hitInfo, terrainMask))
+            {
+
+                Container c = hitInfo.collider.GetComponent<Container>();
+                Debug.Log("Container" + c.ContainerPosition);
+
+                List<Voxel> TransparencyData = new List<Voxel>();
+                foreach (Voxel v in c.solidData)
+                {
+                    if (Vector3.Magnitude(v.WorldPos - hitInfo.point) < radius)
                     {
-                        if (Vector3.Magnitude(v - hitInfo.point) < radius)
-                        {
-                            Debug.Log("transparent" + v);
+                        Debug.Log("transparent" + v);
 
-                            Voxel Vox = c.data.Get(v);
-                            Vox.isTransparent = true;
-                            c.data.Set(v, Vox);
-                            c.ReloadChunck();
-                        }
-                        else
-                        {
-                            Voxel Vox = c.data.Get(v);
-                            Vox.isTransparent = false;
-                            c.data.Set(v, Vox);
-                            c.ReloadChunck();
-                        }
+
+                        Voxel vox = v;
+                        vox.isTransparent = true;
+                        TransparencyData.Add(vox);
+
                     }
+                    else
+                    {
+                        Voxel vox = v;
+                        vox.isTransparent = false;
+                        TransparencyData.Add(vox);
 
-                
-            
+                    }
+                }
+                c.solidData = TransparencyData;
+
+                c.ReloadCoolDown = 2.1f;
+                _iterations = 0;
+            }
+
+
         }
     }
-   
+
+
 }

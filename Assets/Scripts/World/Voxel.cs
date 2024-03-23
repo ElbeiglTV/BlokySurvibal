@@ -13,6 +13,7 @@ public struct Voxel
         }
     }
     public bool isTransparent;
+    public Vector3 WorldPos;
 
 
 }

@@ -14,10 +14,7 @@ public class WorldManager : MonoBehaviour
     public VoxelTexture[] WorldTextures;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        GenerateDefaultTerrain();
-    }
+    
     [ContextMenu("GenerateDefaultTerrain")]
     public void GenerateDefaultTerrain()
     {
