@@ -1,4 +1,3 @@
-using Codice.CM.Client.Gui;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,8 +17,8 @@ public class SceneCameraOverlayTool
         // Dibuja la interfaz sobre la cámara de la escena
         Handles.BeginGUI();
         // Dibuja aquí tu interfaz gráfica, por ejemplo:
-        Handles.DrawSolidRectangleWithOutline(new Rect(sceneWith-120-10, 120, 120, 300), Color.gray, Color.clear);
-        if(GUI.Button(new Rect(sceneWith - 120 ,130, 40, 20), "X"))
+        Handles.DrawSolidRectangleWithOutline(new Rect(sceneWith - 120 - 10, 120, 120, 300), Color.gray, Color.clear);
+        if (GUI.Button(new Rect(sceneWith - 120, 130, 40, 20), "X"))
         {
             VoxelButonsVar.X = !VoxelButonsVar.X;
         }
@@ -50,6 +49,14 @@ public class SceneCameraOverlayTool
             if (GUI.Button(new Rect(sceneWith - 120, 230, 100, 20), "Mode:Construct"))
             {
                 VoxelButonsVar.TogleConstruct = false;
+
+            }
+        }
+        else if (!VoxelButonsVar.TogleConstruct && VoxelButonsVar.BlockID != 0)
+        {
+            if (GUI.Button(new Rect(sceneWith - 120, 230, 100, 20), "Mode:Remplase"))
+            {
+                VoxelButonsVar.BlockID = 0;
             }
         }
         else
@@ -57,20 +64,35 @@ public class SceneCameraOverlayTool
             if (GUI.Button(new Rect(sceneWith - 120, 230, 100, 20), "Mode:Destroy"))
             {
                 VoxelButonsVar.TogleConstruct = true;
+                VoxelButonsVar.BlockID = VoxelButonsVar.BlockID != 0 ? VoxelButonsVar.BlockID : (byte)1;
             }
         }
+        if (VoxelButonsVar.BlockID != 0)
+        {
+            if (GUI.Button(new Rect(sceneWith - 120, 260, 40, 20), "-"))
+            {
+                VoxelButonsVar.BlockID -= VoxelButonsVar.BlockID != (byte)1 ? (byte)1 : (byte)0;
+            }
+            GUI.Label(new Rect(sceneWith - 75, 260, 40, 20), VoxelButonsVar.BlockID.ToString());
+            if (GUI.Button(new Rect(sceneWith - 60, 260, 40, 20), "+"))
+            {
+                VoxelButonsVar.BlockID += 1;
+            }
+        }
+        DrawTexture(VoxelButonsVar.BlockID, sceneWith);
 
-        if (GUI.Button(new Rect(sceneWith - 120, 260, 40, 20), "-"))
-        {
-            VoxelButonsVar.BlockID -= 1;
-        }
-        GUI.Label(new Rect(sceneWith - 75, 260, 40, 20), VoxelButonsVar.BlockID.ToString());
-        if (GUI.Button(new Rect(sceneWith - 60, 260, 40, 20), "+"))
-        {
-            VoxelButonsVar.BlockID += 1;
-        }
+
+
+
 
         Handles.EndGUI();
+
+    }
+    static void DrawTexture(byte textId, float sceneWith)
+    {
+        if (textId == 1) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("dirt"));
+        else if (textId == 2) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("cobblestone"));
+        else if (textId == 3) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("wood"));
 
     }
 }
