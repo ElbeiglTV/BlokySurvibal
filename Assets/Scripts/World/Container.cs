@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -66,19 +68,19 @@ public class Container : MonoBehaviour
 
             voxelColor = WorldManager.instance.WorldColors[block.Id - 1];
 
-            voxelColorAlpha = voxelColor.color;
+            voxelColorAlpha = new Color32((byte)(block.Id - 1), 0, 0, 0);
 
-            if (block.isTransparent)
-            {
+           // if (block.Id == 1)
+           // {
+           //    voxelColorAlpha = new Color32(0, 0, 0, 0);
+           // }
+           // else
+           // {
+            // voxelColorAlpha = new Color32((byte)(1*Mathf.Pow(2,block.Id-1)), 0, 0, 0);
+           // }
 
-                voxelColorAlpha.a = 0.3f;
-            }
-            else
-            {
-                voxelColorAlpha.a = 1;
-            }
 
-
+            voxelColorAlpha.a = 1;
             voxelSmootness = new Vector2(voxelColor.metallic, voxelColor.Smoothness);
 
 

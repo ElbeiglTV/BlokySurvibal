@@ -11,7 +11,7 @@ public class WorldManager : MonoBehaviour
     public SerialisedDictionary<Vector3,Container> container;
 
     public VoxelColor[] WorldColors;
-    public VoxelTexture[] WorldTextures;
+    
 
     // Start is called before the first frame update
     
