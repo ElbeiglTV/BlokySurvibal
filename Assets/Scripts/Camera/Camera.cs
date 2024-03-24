@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Camera : MonoBehaviour
@@ -7,8 +6,8 @@ public class Camera : MonoBehaviour
     public LayerMask terrainMask;
     public Vector3 offset;
     public Vector3 rotation;
-    public Material mat;
-    //public float radius;
+    public Material[] mat;
+    public float maxRadius;
     //int _iterations = 0;
 
 
@@ -30,11 +29,11 @@ public class Camera : MonoBehaviour
 
 
     }
-    
+
     void ManagedFixedUpdate()
     {
         TransparencyControl(Vector3.zero);
-       
+
 
     }
 
@@ -45,26 +44,31 @@ public class Camera : MonoBehaviour
         float Radius;
         if (Physics.Linecast(transform.position + rayOffSet, target.position, out RaycastHit hitInfo, terrainMask))
         {
-            Radius = 10 / hitInfo.distance;
+            Radius = maxRadius / hitInfo.distance;
             if (Radius < 1.5f)
             {
                 Radius = 1.5f;
             }
-            
-            mat.SetVector("_Position", hitInfo.point);
-            mat.SetFloat("_Radius", Radius);
-            mat.SetFloat("_Intencity", 4);
-            
+
+            foreach (Material mat in mat)
+            {
+                mat.SetVector("_Position", hitInfo.point);
+                mat.SetFloat("_Radius", Radius);
+                mat.SetFloat("_Intencity", 4);
+
+            }
+
 
         }
         else
         {
-            mat.SetFloat("_Intencity", 1);
+            foreach (Material mat in mat)
+                mat.SetFloat("_Intencity", 1);
         }
 
 
-        
+
     }
 
-   
+
 }

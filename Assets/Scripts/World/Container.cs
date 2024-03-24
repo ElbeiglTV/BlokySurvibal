@@ -10,7 +10,7 @@ public class Container : MonoBehaviour
 
 
     public Vector3 ContainerPosition;
-    public float ReloadCoolDown = 0;
+    //public float ReloadCoolDown = 0;
 
     public SerialisedDictionary<Vector3, Voxel> data;
     public List<Voxel> solidData = new List<Voxel>();
@@ -197,7 +197,7 @@ public class Container : MonoBehaviour
             }
         }
     }
-    public void ReloadColorsWithCoolDown()
+    /*public void ReloadColorsWithCoolDown()
     {
 
         if (ReloadCoolDown < 1.5f)
@@ -372,7 +372,7 @@ public class Container : MonoBehaviour
 
         
         
-    }
+    }*/
 
     public void UploadMesh()
     {

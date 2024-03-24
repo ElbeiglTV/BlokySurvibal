@@ -17,7 +17,24 @@ public class SceneCameraOverlayTool
         // Dibuja la interfaz sobre la cámara de la escena
         Handles.BeginGUI();
         // Dibuja aquí tu interfaz gráfica, por ejemplo:
-        Handles.DrawSolidRectangleWithOutline(new Rect(sceneWith - 120 - 10, 120, 120, 300), Color.gray, Color.clear);
+
+        #region UiBox
+        Handles.DrawSolidRectangleWithOutline(new Rect(sceneWith - 110 - 10, 120, 100, 300), Color.gray, Color.clear);
+        Handles.DrawSolidRectangleWithOutline(new Rect(sceneWith - 120 - 10, 130, 120, 280), Color.gray, Color.clear);
+        Handles.color = Color.gray;
+        Handles.DrawSolidDisc(new Vector3(sceneWith - 110 - 10, 130, 0), Vector3.forward, 10);
+        Handles.DrawSolidDisc(new Vector3(sceneWith - 20, 130, 0), Vector3.forward, 10);
+        Handles.DrawSolidDisc(new Vector3(sceneWith - 110 - 10, 410, 0), Vector3.forward, 10);
+        Handles.DrawSolidDisc(new Vector3(sceneWith - 20, 410, 0), Vector3.forward, 10);
+        #endregion
+
+
+
+
+
+
+
+
         if (GUI.Button(new Rect(sceneWith - 120, 130, 40, 20), "X"))
         {
             VoxelButonsVar.X = !VoxelButonsVar.X;
