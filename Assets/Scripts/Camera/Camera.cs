@@ -7,9 +7,10 @@ public class Camera : MonoBehaviour
     public LayerMask terrainMask;
     public Vector3 offset;
     public Vector3 rotation;
-    public float radius;
-    int _iterations = 0;
-   
+    public Material mat;
+    //public float radius;
+    //int _iterations = 0;
+
 
 
 
@@ -29,7 +30,7 @@ public class Camera : MonoBehaviour
 
 
     }
-
+    
     void ManagedFixedUpdate()
     {
         TransparencyControl(Vector3.zero);
@@ -39,48 +40,31 @@ public class Camera : MonoBehaviour
 
     void TransparencyControl(Vector3 rayOffSet)
     {
-        _iterations++;
 
-        if (_iterations >= 10)
+
+        float Radius;
+        if (Physics.Linecast(transform.position + rayOffSet, target.position, out RaycastHit hitInfo, terrainMask))
         {
-
-
-            if (Physics.Linecast(transform.position+rayOffSet, target.position, out RaycastHit hitInfo, terrainMask))
+            Radius = 10 / hitInfo.distance;
+            if (Radius < 1.5f)
             {
-
-                Container c = hitInfo.collider.GetComponent<Container>();
-                Debug.Log("Container" + c.ContainerPosition);
-
-                List<Voxel> TransparencyData = new List<Voxel>();
-                foreach (Voxel v in c.solidData)
-                {
-                    if (Vector3.Magnitude(v.WorldPos - hitInfo.point) < radius)
-                    {
-                        Debug.Log("transparent" + v);
-
-
-                        Voxel vox = v;
-                        vox.isTransparent = true;
-                        TransparencyData.Add(vox);
-
-                    }
-                    else
-                    {
-                        Voxel vox = v;
-                        vox.isTransparent = false;
-                        TransparencyData.Add(vox);
-
-                    }
-                }
-                c.solidData = TransparencyData;
-
-                c.ReloadCoolDown = 2.1f;
-                _iterations = 0;
+                Radius = 1.5f;
             }
-
+            
+            mat.SetVector("_Position", hitInfo.point);
+            mat.SetFloat("_Radius", Radius);
+            mat.SetFloat("_Intencity", 4);
+            
 
         }
+        else
+        {
+            mat.SetFloat("_Intencity", 1);
+        }
+
+
+        
     }
 
-
+   
 }

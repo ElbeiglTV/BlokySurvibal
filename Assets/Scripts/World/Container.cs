@@ -7,10 +7,6 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class Container : MonoBehaviour
 {
-    private void Start()
-    {
-        UpdateManager.OnFixedUpdate += ReloadColorsWithCoolDown;
-    }
 
 
     public Vector3 ContainerPosition;
@@ -90,7 +86,11 @@ public class Container : MonoBehaviour
 
             for (int i = 0; i < 6; i++)
             {
-                if (this[blockPos + voxelFaceChecks[i]].isSolid) continue;
+                if (this[blockPos].Id == this[blockPos + voxelFaceChecks[i]].Id)
+                {
+                    if (this[blockPos + voxelFaceChecks[i]].isSolid) continue;
+                }
+                
 
 
                 if (blockPos.x % 10 == 0 && i == 2)
