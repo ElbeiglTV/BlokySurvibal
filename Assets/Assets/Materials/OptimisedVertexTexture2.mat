@@ -63,7 +63,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.02
+    - _Alpha: 0.1
     - _AlphaOrCliping: 1
     - _AmbienOclucion: 0.11
     - _Clip: 0
@@ -71,6 +71,11 @@ Material:
     - _QueueControl: 1
     - _QueueOffset: 0
     - _Radius: 1.5
+    - _Radius_1: 1
+    - _Radius_2: 1
     m_Colors:
+    - _PosMin: {r: 0, g: 0, b: 0, a: 0}
     - _Position: {r: 46.147854, g: 5.4481063, b: 49, a: 0}
+    - _Position_1: {r: 0, g: 0, b: 0, a: 0}
+    - _Position_2: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

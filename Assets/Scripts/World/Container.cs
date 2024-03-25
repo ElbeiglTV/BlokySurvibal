@@ -88,11 +88,17 @@ public class Container : MonoBehaviour
 
             for (int i = 0; i < 6; i++)
             {
-                if (this[blockPos].Id == this[blockPos + voxelFaceChecks[i]].Id)
+                if (this[blockPos].Id != 1)
                 {
                     if (this[blockPos + voxelFaceChecks[i]].isSolid) continue;
+
                 }
-                
+                /*if (this[blockPos].Id == this[blockPos + voxelFaceChecks[i]].Id)
+                {
+                    if (this[blockPos + voxelFaceChecks[i]].isSolid) continue;
+
+                }*/
+                //if (this[blockPos + voxelFaceChecks[i]].isSolid) continue;
 
 
                 if (blockPos.x % 10 == 0 && i == 2)

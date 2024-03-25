@@ -9,8 +9,16 @@ public class Tree : Resource, IreColectable
     public TMP_Text num;
     public GameObject Particle;
     public GameObject Select;
+    private int _orginalLife;
 
-
+    private void Awake()
+    {
+        _orginalLife = life;
+    }
+    private void OnEnable()
+    {
+        life = _orginalLife;
+    }
     public bool ActiveSelf()
     {
         return gameObject.activeSelf;

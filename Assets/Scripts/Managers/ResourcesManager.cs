@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ResourcesManager : MonoBehaviour
 {
+    public TMP_Text WoodUi;
     #region Singleton
     private static ResourcesManager _instance;
     public static ResourcesManager instance { get { return _instance; } private set { } }
@@ -29,10 +31,18 @@ public class ResourcesManager : MonoBehaviour
             if (_wood + value <= 0)
             {
                 _wood = 0;
+                if (WoodUi != null)
+                {
+                    WoodUi.text = _wood.ToString();
+                }
             }
             else
             {
                 _wood += value;
+                if (WoodUi != null)
+                {
+                    WoodUi.text = _wood.ToString();
+                }
             }
             
         }
@@ -58,5 +68,7 @@ public class ResourcesManager : MonoBehaviour
 
 
     #endregion
+  
+
 
 }

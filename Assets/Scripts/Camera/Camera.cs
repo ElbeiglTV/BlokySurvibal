@@ -54,8 +54,7 @@ public class Camera : MonoBehaviour
             {
                 mat.SetVector("_Position", hitInfo.point);
                 mat.SetFloat("_Radius", Radius);
-                mat.SetFloat("_Intencity", 4);
-
+                mat.SetFloat("_Intencity", 8);
             }
 
 
@@ -65,7 +64,18 @@ public class Camera : MonoBehaviour
             foreach (Material mat in mat)
                 mat.SetFloat("_Intencity", 1);
         }
-
+        if (Physics.Linecast(target.position + rayOffSet, transform.position, out RaycastHit hitInfo2, terrainMask))
+        {
+            foreach (Material mat in mat)
+            {
+                mat.SetVector("_Position_1", hitInfo2.point + new Vector3(0,1.5f,0));
+            }
+        }
+        else
+        {
+            foreach (Material mat in mat)
+                mat.SetFloat("_Intencity", 1);
+        }
 
 
     }
