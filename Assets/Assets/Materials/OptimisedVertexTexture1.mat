@@ -72,5 +72,5 @@ Material:
     - _QueueOffset: 0
     - _Radius: 6.5005417
     m_Colors:
-    - _Position: {r: 49.548283, g: 10, b: 49.926254, a: 0}
+    - _Position: {r: 49.451633, g: 9.999999, b: 49.952953, a: 0}
   m_BuildTextureStacks: []

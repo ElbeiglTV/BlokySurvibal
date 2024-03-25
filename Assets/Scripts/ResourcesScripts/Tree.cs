@@ -10,6 +10,7 @@ public class Tree : Resource, IreColectable
         if(life<= 0)
         {
             ResourcesManager.instance.wood = value;
+            gameObject.SetActive(false);
         }
     }
 }

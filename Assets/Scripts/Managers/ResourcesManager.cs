@@ -9,13 +9,13 @@ public class ResourcesManager : MonoBehaviour
     public static ResourcesManager instance { get { return _instance; } private set { } }
     private void Awake()
     {
-        if(instance == null) instance = this;
+        if(_instance == null) _instance = this;
         else Destroy(gameObject);
     }
     #endregion
     #region ResourcesInfo
-    int _wood;
-    int _currency;
+    int _wood=default;
+    int _currency=default;
     #endregion
     #region ResourcesGeter/Seters;
     public int wood

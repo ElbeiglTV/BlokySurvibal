@@ -26,6 +26,17 @@ public class FarmingTriguerControl : MonoBehaviour
             }
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Tree")) // si el colider tiene la tag arbol tonces activo anim talar
+        {
+           if(colectable == other.GetComponent<IreColectable>())
+           {
+                colectable = null;
+           }
+            myAnimator.SetBool("Talando", false);
+        }
+    }
 
     public void Colect()
     {
