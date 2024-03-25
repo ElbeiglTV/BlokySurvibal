@@ -25,6 +25,7 @@ public class FarmingTriguerControl : MonoBehaviour
             if (!colectable.ActiveSelf())
             {
                 myAnimator.SetBool("Talando", false);
+                colectable.TogleSelect(false);
                 colectable = null;
             }
         }
@@ -39,6 +40,7 @@ public class FarmingTriguerControl : MonoBehaviour
             {
                 colectable = other.GetComponent<IreColectable>();
                 myAnimator.SetBool("Talando", true);
+                colectable.TogleSelect(true);
                 rotateTarget.position = new Vector3(other.transform.position.x, rotateTarget.position.y, other.transform.position.z);
             }
         }
@@ -49,6 +51,7 @@ public class FarmingTriguerControl : MonoBehaviour
         {
             if (other.GetComponent<IreColectable>() == colectable)
             {
+                colectable.TogleSelect(false);
                 colectable = null;
             }
             myAnimator.SetBool("Talando", false);

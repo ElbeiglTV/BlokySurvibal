@@ -8,6 +8,7 @@ public class Tree : Resource, IreColectable
 {
     public TMP_Text num;
     public GameObject Particle;
+    public GameObject Select;
 
 
     public bool ActiveSelf()
@@ -26,5 +27,10 @@ public class Tree : Resource, IreColectable
             Particle.SetActive(true);
             gameObject.SetActive(false);
         }
+    }
+
+    public void TogleSelect(bool mbool)
+    {
+        Select.SetActive(mbool);
     }
 }
