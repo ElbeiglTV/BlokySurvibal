@@ -67,7 +67,7 @@ Material:
     - _AlphaOrCliping: 1
     - _AmbienOclucion: 0.11
     - _Clip: 0
-    - _Intencity: 4
+    - _Intencity: 1
     - _QueueControl: 1
     - _QueueOffset: 0
     - _Radius: 1.5

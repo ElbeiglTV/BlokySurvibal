@@ -5,9 +5,11 @@ using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 
 
-[RequireComponent(typeof(CharacterController)),SelectionBase]
+[RequireComponent(typeof(CharacterController)), SelectionBase]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] Controller controller;
+    public bool MobileInput;
     Vector3 _input;
     CharacterController _characterController;
     public Animator myAnimator;
@@ -37,7 +39,16 @@ public class PlayerController : MonoBehaviour
 
     private void InputUpdater() 
     {
+
+        if (!MobileInput)
+        { 
+        
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        }
+        else
+        {
+            _input = controller.GetMovementInput();
+        }
 
     }
     public Vector3 GetInput()
