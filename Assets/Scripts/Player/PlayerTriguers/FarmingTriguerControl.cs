@@ -14,6 +14,23 @@ public class FarmingTriguerControl : MonoBehaviour
 
     IreColectable colectable;
 
+    private void Start()
+    {
+        UpdateManager.OnUpdate += ManagedUpdate;
+    }
+    private void ManagedUpdate()
+    {
+        if (colectable != null)
+        {
+            if (!colectable.ActiveSelf())
+            {
+                myAnimator.SetBool("Talando", false);
+                colectable = null;
+            }
+        }
+    }
+
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Tree")) // si el colider tiene la tag arbol tonces activo anim talar
@@ -21,7 +38,7 @@ public class FarmingTriguerControl : MonoBehaviour
             if (controller.GetInput().magnitude == 0)
             {
                 colectable = other.GetComponent<IreColectable>();
-                myAnimator.SetBool("Talando",true);
+                myAnimator.SetBool("Talando", true);
                 rotateTarget.position = new Vector3(other.transform.position.x, rotateTarget.position.y, other.transform.position.z);
             }
         }
@@ -30,13 +47,16 @@ public class FarmingTriguerControl : MonoBehaviour
     {
         if (other.CompareTag("Tree")) // si el colider tiene la tag arbol tonces activo anim talar
         {
-           if(colectable == other.GetComponent<IreColectable>())
-           {
+            if (other.GetComponent<IreColectable>() == colectable)
+            {
                 colectable = null;
-           }
+            }
             myAnimator.SetBool("Talando", false);
+
+
         }
     }
+
 
     public void Colect()
     {

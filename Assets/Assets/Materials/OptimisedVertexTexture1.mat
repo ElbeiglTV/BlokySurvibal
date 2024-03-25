@@ -67,10 +67,10 @@ Material:
     - _AlphaOrCliping: 0
     - _AmbienOclucion: 0.1
     - _Clip: 0.4
-    - _Intencity: 1
+    - _Intencity: 4
     - _QueueControl: 1
     - _QueueOffset: 0
-    - _Radius: 6.5005417
+    - _Radius: 3.6810894
     m_Colors:
-    - _Position: {r: 49.451633, g: 9.999999, b: 49.952953, a: 0}
+    - _Position: {r: 54.13163, g: 9.387258, b: 49, a: 0}
   m_BuildTextureStacks: []

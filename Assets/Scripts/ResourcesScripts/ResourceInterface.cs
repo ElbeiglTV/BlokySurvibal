@@ -8,5 +8,6 @@ public interface IreColectable
     /// <summary>
     /// Aplica daño a el recurso Que contenga la interface
     /// </summary>
-    public void Colect(int Damage); 
+    public void Colect(int Damage);
+    public bool ActiveSelf();
 }

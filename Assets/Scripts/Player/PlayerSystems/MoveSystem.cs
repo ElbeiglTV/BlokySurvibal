@@ -5,7 +5,8 @@ public class MoveSystem
     private Vector3 _input;
     private Vector3 _moveVector;
 
-    public float Speed;
+    public float speed;
+    public float rotateSpeed;
     public float Gravity = 9.81f;
 
     public CharacterController characterController;
@@ -44,14 +45,14 @@ public class MoveSystem
     }
     private void SetMoveVector()
     {
-        _moveVector = new Vector3(_input.x, _moveVector.y / Speed, _input.z);
-        _moveVector = _moveVector * Speed;
+        _moveVector = new Vector3(_input.x, _moveVector.y / speed, _input.z);
+        _moveVector = _moveVector * speed;
     }
     private void RotateTarget()
     {
         if (_input.magnitude != 0)
         {
-            rotateTarguet.transform.position = characterController.transform.position + _input;
+            rotateTarguet.transform.position = Vector3.Slerp(rotateTarguet.transform.position, characterController.transform.position + _input,rotateSpeed*Time.deltaTime);
         }
 
     }
