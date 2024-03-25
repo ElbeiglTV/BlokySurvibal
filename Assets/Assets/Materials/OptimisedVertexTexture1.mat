@@ -70,7 +70,7 @@ Material:
     - _Intencity: 1
     - _QueueControl: 1
     - _QueueOffset: 0
-    - _Radius: 1.5
+    - _Radius: 6.5005417
     m_Colors:
-    - _Position: {r: 40.33138, g: 4.1986094, b: 49, a: 0}
+    - _Position: {r: 49.548283, g: 10, b: 49.926254, a: 0}
   m_BuildTextureStacks: []

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     Vector3 _input;
     CharacterController _characterController;
+    public Animator myAnimator;
 
     public MoveSystem moveSystem;
 
@@ -27,6 +28,10 @@ public class PlayerController : MonoBehaviour
     {
         InputUpdater();
         moveSystem.Update(_input);
+        if(_input.magnitude != 0)
+        {
+            myAnimator.SetBool("Talando", false);
+        }
     }
     
 
@@ -34,6 +39,10 @@ public class PlayerController : MonoBehaviour
     {
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
+    }
+    public Vector3 GetInput()
+    {
+        return _input;
     }
     
 
