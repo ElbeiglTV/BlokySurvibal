@@ -75,7 +75,7 @@ Material:
     - _Radius_2: 1
     m_Colors:
     - _PosMin: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: 58.716026, g: 7, b: 49.689392, a: 0}
-    - _Position_1: {r: 58.71603, g: 8.280092, b: 50, a: 0}
+    - _Position: {r: 42.488396, g: 6.211486, b: 41, a: 0}
+    - _Position_1: {r: 42.488396, g: 7.4999995, b: 41.298714, a: 0}
     - _Position_2: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
