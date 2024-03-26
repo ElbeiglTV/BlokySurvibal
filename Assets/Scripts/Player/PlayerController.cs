@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Controller controller;
     public bool MobileInput;
+
+
+
+
     Vector3 _input;
     CharacterController _characterController;
     public Animator myAnimator;

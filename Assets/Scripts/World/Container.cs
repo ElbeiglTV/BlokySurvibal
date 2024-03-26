@@ -9,9 +9,9 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class Container : MonoBehaviour
 {
-
-
     public Vector3 ContainerPosition;
+
+
     //public float ReloadCoolDown = 0;
 
     public SerialisedDictionary<Vector3, Voxel> data;
@@ -88,6 +88,11 @@ public class Container : MonoBehaviour
 
             for (int i = 0; i < 6; i++)
             {
+                if (this[blockPos + voxelFaceChecks[i]].Id == 1 && this[blockPos].Id == 1)
+                {
+                    if (this[blockPos + voxelFaceChecks[i]].isSolid) continue;
+
+                }
                 if (this[blockPos].Id != 1)
                 {
                     if (this[blockPos + voxelFaceChecks[i]].isSolid) continue;
