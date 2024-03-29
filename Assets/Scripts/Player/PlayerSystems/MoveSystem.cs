@@ -52,7 +52,7 @@ public class MoveSystem
     {
         if (_input.magnitude != 0)
         {
-            rotateTarguet.transform.position = Vector3.Slerp(rotateTarguet.transform.position, characterController.transform.position + _input,rotateSpeed*Time.deltaTime);
+            rotateTarguet.transform.position = characterController.transform.position + _input;
         }
 
     }

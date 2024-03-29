@@ -70,12 +70,12 @@ Material:
     - _Intencity: 1
     - _QueueControl: 1
     - _QueueOffset: 0
-    - _Radius: 1.5
+    - _Radius: 1.8572975
     - _Radius_1: 2
     - _Radius_2: 1
     m_Colors:
     - _PosMin: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: 42.488396, g: 6.211486, b: 41, a: 0}
-    - _Position_1: {r: 42.488396, g: 7.4999995, b: 41.298714, a: 0}
+    - _Position: {r: 43.541115, g: 8, b: 47.88252, a: 0}
+    - _Position_1: {r: 43.54112, g: 9.416826, b: 48, a: 0}
     - _Position_2: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

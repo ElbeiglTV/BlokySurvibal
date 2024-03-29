@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Controller controller;
     public bool MobileInput;
-
+    public float _inputCheck;
 
 
 
@@ -34,9 +34,14 @@ public class PlayerController : MonoBehaviour
     {
         InputUpdater();
         moveSystem.Update(_input);
-        if(_input.magnitude != 0)
+        if(_inputCheck != 0)
         {
+            myAnimator.SetBool("Move", true);
             myAnimator.SetBool("Talando", false);
+        }
+        else
+        {
+            myAnimator.SetBool("Move", false);
         }
     }
     
@@ -45,9 +50,9 @@ public class PlayerController : MonoBehaviour
     {
 
         if (!MobileInput)
-        { 
-        
-        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        {
+          _inputCheck = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized.magnitude;
+          _input = new Vector3(Input.GetAxis("Horizontal")*_inputCheck , 0, Input.GetAxis("Vertical")* _inputCheck).normalized;
         }
         else
         {
@@ -59,6 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         return _input;
     }
+    
     
 
 
