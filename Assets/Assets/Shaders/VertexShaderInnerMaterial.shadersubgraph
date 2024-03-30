@@ -835,6 +835,21 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "269b73c2732c42e5bd04ca5ff38b46cb",
+    "m_Id": 3,
+    "m_DisplayName": "Top",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Top",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "2d3a495e1de54ec79db9dd1b28f89b7c",
     "m_Id": 6,
     "m_DisplayName": "B",
@@ -866,6 +881,9 @@
         }
     },
     "m_Slots": [
+        {
+            "m_Id": "269b73c2732c42e5bd04ca5ff38b46cb"
+        },
         {
             "m_Id": "49f456e7f3684de58ef83b06edd922e9"
         },
@@ -1043,10 +1061,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "49f456e7f3684de58ef83b06edd922e9",
     "m_Id": 1,
-    "m_DisplayName": "Top_Bottom",
+    "m_DisplayName": "Bottom",
     "m_SlotType": 1,
     "m_Hidden": false,
-    "m_ShaderOutputName": "Top_Bottom",
+    "m_ShaderOutputName": "Bottom",
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
@@ -1058,10 +1076,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "4d519ed44e3245e0a08ae66878f0542d",
     "m_Id": 1,
-    "m_DisplayName": "Top_Bottom",
+    "m_DisplayName": "Bottom",
     "m_SlotType": 1,
     "m_Hidden": false,
-    "m_ShaderOutputName": "Top_Bottom",
+    "m_ShaderOutputName": "Bottom",
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
@@ -2600,6 +2618,9 @@
     },
     "m_Slots": [
         {
+            "m_Id": "e812d78b7b644ff08ec847b6ba5b7d90"
+        },
+        {
             "m_Id": "4d519ed44e3245e0a08ae66878f0542d"
         },
         {
@@ -3040,6 +3061,21 @@
         "x": 0.0,
         "y": 0.0
     },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "e812d78b7b644ff08ec847b6ba5b7d90",
+    "m_Id": 3,
+    "m_DisplayName": "Top",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Top",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
     "m_Labels": []
 }
 

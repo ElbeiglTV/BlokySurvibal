@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8452782316172261835
+--- !u!114 &-4487987606531204445
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OptimisedVertexTexture2
-  m_Shader: {fileID: -6465566751694194690, guid: 27ca80f6011eeb94e8dd0d32222e7d9d,
+  m_Name: Test
+  m_Shader: {fileID: -6465566751694194690, guid: 8db06b0e426d019458a6e4a62134d035,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -31,30 +31,43 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _SampleTexture2DArray_f958437ef1dd41a98fba2326d9acb3cb_TextureArray_1_Texture2DArray:
-        m_Texture: {fileID: 18700000, guid: c3ed8c3232c3f4d4f8d6a83c6c92fe1b, type: 3}
+    - _AO:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _TexturesBottom:
-        m_Texture: {fileID: 18700000, guid: 98f2525a44eb8264b89bacabd2ad57f5, type: 3}
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: ee3d0e2a4e004fb4b8eb4e043d13aa4e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _TexturesToSides:
-        m_Texture: {fileID: 18700000, guid: c3ed8c3232c3f4d4f8d6a83c6c92fe1b, type: 3}
+    - _Emissive:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _TexturesTop:
-        m_Texture: {fileID: 18700000, guid: 98f2525a44eb8264b89bacabd2ad57f5, type: 3}
+    - _MaskMap:
+        m_Texture: {fileID: 2800000, guid: f9e7fed3f06f9bd4193667d4411649cf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _TexturesTopButtom:
-        m_Texture: {fileID: 18700000, guid: 98f2525a44eb8264b89bacabd2ad57f5, type: 3}
+    - _Metallic:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 1cb4b2a9c4ad6b4479051dcf2cb99466, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ObjectSpaceTriplanarMapping_bb05dde0ddc34524a5b7580618f95fa4_MaskMap_1207552691_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WorldSpaceTriplanarMapping_dd22df3c6aec4ad5a547efc0fb778b74_MaskMap_2582843286_Texture2D:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -71,19 +84,31 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.1
-    - _AlphaOrCliping: 1
-    - _AmbienOclucion: 0
-    - _Clip: 0
-    - _Intencity: 1
-    - _QueueControl: 1
+    - _Alpha: 1
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _Blending: 1
+    - _CastShadows: 1
+    - _Cull: 2
+    - _DstBlend: 0
+    - _MoveSpeed: 0
+    - _Moves: 0
+    - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 1.5
-    - _Radius_1: 1
-    - _Radius_2: 1
+    - _ReceiveShadows: 1
+    - _Smoothness: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _Tiling: 1
+    - _Use_Mask_Map: 1
+    - _Use_World_Space: 0
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
-    - _PosMin: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: 46.147854, g: 5.4481063, b: 49, a: 0}
-    - _Position_1: {r: 0, g: 0, b: 0, a: 0}
-    - _Position_2: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 0.71758085, b: 0, a: 0}
+    - _MoveDirection: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
