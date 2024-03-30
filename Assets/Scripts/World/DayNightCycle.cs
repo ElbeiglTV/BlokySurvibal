@@ -11,6 +11,7 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] LengthOfDay ChooseDayLength;
 
     private float _degrees;
+    private float totalDegreesRotated;
 
     [Header("How many real life hours last a in-game day.")]
     [Range(1, 24)]
@@ -56,6 +57,18 @@ public class DayNightCycle : MonoBehaviour
                 break;
         }
         gameObject.transform.Rotate(0, 0, _degrees * Time.deltaTime);
+
+        float rotationThisFrame = _degrees * Time.deltaTime;
+        totalDegreesRotated += rotationThisFrame;
+        
+    }
+
+    public (int CurrentHour, int CurrentMinute) CurrentHourAndMinute()
+    {
+        float hoursPassed = ((totalDegreesRotated + 180) % 360 / 360f) * 24;
+        int currentHour = (int)hoursPassed % 24;
+        int currentMinute = (int)((hoursPassed - (int)hoursPassed) * 60);
+        return (currentHour, currentMinute);
     }
 }
 public enum LengthOfDay
