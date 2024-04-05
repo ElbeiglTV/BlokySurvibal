@@ -2,13 +2,12 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Axe2 : MonoBehaviour
 {
-    
     void Start()
     {
         GameObject obj = gameObject;
         MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
         MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
-        meshFilter.mesh = new Mesh();
+        meshFilter.sharedMesh = new Mesh();
         meshFilter.mesh.vertices = new Vector3[] {
             new Vector3(0.6278198f, 0.11832f, 1.425893f),
             new Vector3(0.6278198f, -0.1139267f, 1.425893f),
@@ -487,5 +486,6 @@ public class Axe2 : MonoBehaviour
             new Vector2(0.6795208f, 0.779675f),
             new Vector2(0.6604483f, 0.8127145f),
         };
+DestroyImmediate(this);
     }
 }

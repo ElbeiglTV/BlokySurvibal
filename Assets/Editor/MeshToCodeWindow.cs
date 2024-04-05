@@ -82,6 +82,7 @@ public class MeshToCodeWindow : EditorWindow
             codeBuilder.AppendLine($"            new Vector2({uvs[i].x.ToString(CultureInfo.InvariantCulture)}f, {uvs[i].y.ToString(CultureInfo.InvariantCulture)}f),");
         }
         codeBuilder.AppendLine("        };");
+        codeBuilder.AppendLine("DestroyImmediate(this);");
 
         codeBuilder.AppendLine("    }");
         codeBuilder.AppendLine("}");
