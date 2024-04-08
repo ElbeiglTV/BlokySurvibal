@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Rendering;
-
 [ExecuteInEditMode]
 public class pCube1 : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class pCube1 : MonoBehaviour
         MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
         MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
         meshFilter.sharedMesh = new Mesh();
-        meshFilter.mesh.vertices = new Vector3[] {
+        meshFilter.sharedMesh.vertices = new Vector3[] {
             new Vector3(49.65339f, 50f, 0f),
             new Vector3(18.12582f, 50f, -22.61215f),
             new Vector3(18.12582f, 50f, 22.61215f),
@@ -130,7 +129,7 @@ public class pCube1 : MonoBehaviour
             new Vector3(45.50045f, -35f, 45.50045f),
             new Vector3(-28.94027f, -35f, 17.35348f),
         };
-        meshFilter.mesh.triangles = new int[] {
+        meshFilter.sharedMesh.triangles = new int[] {
             0, 1, 2,
             1, 3, 2,
             1, 4, 3,
@@ -196,7 +195,7 @@ public class pCube1 : MonoBehaviour
             116, 114, 117,
             116, 117, 115,
         };
-        meshFilter.mesh.normals = new Vector3[] {
+        meshFilter.sharedMesh.normals = new Vector3[] {
             new Vector3(0f, 1f, 0f),
             new Vector3(0f, 1f, 0f),
             new Vector3(0f, 1f, 0f),
@@ -316,7 +315,7 @@ public class pCube1 : MonoBehaviour
             new Vector3(0f, 1f, 0f),
             new Vector3(0f, 1f, 0f),
         };
-        meshFilter.mesh.uv = new Vector2[] {
+        meshFilter.sharedMesh.uv = new Vector2[] {
             new Vector2(0.05738842f, 0.7707383f),
             new Vector2(0.1138045f, 0.6920829f),
             new Vector2(0.0009764731f, 0.69208f),
@@ -441,15 +440,13 @@ public class pCube1 : MonoBehaviour
     }
     private Material GetDefaultMaterial()
     {
-        if (GraphicsSettings.renderPipelineAsset != null && GraphicsSettings.renderPipelineAsset.GetType().Name == "UniversalRenderPipelineAsset")
+        if(GraphicsSettings.renderPipelineAsset != null && GraphicsSettings.renderPipelineAsset.GetType().Name == "UniversalRenderPipelineAsset")
         {
             return new Material(Shader.Find("Universal Render Pipeline/Lit"));
         }
         else
         {
-            // Proyecto no URP
             return new Material(Shader.Find("Standard"));
-           
         }
     }
 }

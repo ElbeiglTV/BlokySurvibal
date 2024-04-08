@@ -38,6 +38,7 @@ public class MeshToCodeWindow : Editor
         StringBuilder codeBuilder = new StringBuilder();
 
         codeBuilder.AppendLine("using UnityEngine;");
+        codeBuilder.AppendLine("using UnityEngine.Rendering;");
         codeBuilder.AppendLine("[ExecuteInEditMode]");
         codeBuilder.AppendLine($"public class {mesh.name} : MonoBehaviour"); // Cambia el nombre de la clase aquí
         codeBuilder.AppendLine("{");
@@ -85,17 +86,17 @@ public class MeshToCodeWindow : Editor
         codeBuilder.AppendLine("        DestroyImmediate(this);");
 
         codeBuilder.AppendLine("    }");
-        codeBuilder.AppendLine("private Material GetDefaultMaterial()");
-        codeBuilder.AppendLine("{");
-        codeBuilder.AppendLine("  if(GraphicsSettings.renderPipelineAsset != null && GraphicsSettings.renderPipelineAsset.GetType().Name == \"UniversalRenderPipelineAsset\")");
-        codeBuilder.AppendLine("  {");
-        codeBuilder.AppendLine("     return new Material(Shader.Find(\"Universal Render Pipeline/Lit\"));");
-        codeBuilder.AppendLine("  }");
-        codeBuilder.AppendLine("  else");
-        codeBuilder.AppendLine("  {");
-        codeBuilder.AppendLine("     return new Material(Shader.Find(\"Standard\"));");
-        codeBuilder.AppendLine("  }");
-        codeBuilder.AppendLine("}");
+        codeBuilder.AppendLine("    private Material GetDefaultMaterial()");
+        codeBuilder.AppendLine("    {");
+        codeBuilder.AppendLine("        if(GraphicsSettings.renderPipelineAsset != null && GraphicsSettings.renderPipelineAsset.GetType().Name == \"UniversalRenderPipelineAsset\")");
+        codeBuilder.AppendLine("        {");
+        codeBuilder.AppendLine("            return new Material(Shader.Find(\"Universal Render Pipeline/Lit\"));");
+        codeBuilder.AppendLine("        }");
+        codeBuilder.AppendLine("        else");
+        codeBuilder.AppendLine("        {");
+        codeBuilder.AppendLine("            return new Material(Shader.Find(\"Standard\"));");
+        codeBuilder.AppendLine("        }");
+        codeBuilder.AppendLine("    }");
 
         codeBuilder.AppendLine("}");
 
