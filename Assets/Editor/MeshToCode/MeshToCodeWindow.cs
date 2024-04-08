@@ -50,7 +50,7 @@ public class MeshToCodeWindow : Editor
         codeBuilder.AppendLine("        meshFilter.sharedMesh = new Mesh();");
 
         Vector3[] vertices = mesh.vertices;
-        codeBuilder.AppendLine("        meshFilter.mesh.vertices = new Vector3[] {");
+        codeBuilder.AppendLine("        meshFilter.sharedMesh.vertices = new Vector3[] {");
         for (int i = 0; i < vertices.Length; i++)
         {
             codeBuilder.AppendLine($"            new Vector3({vertices[i].x.ToString(CultureInfo.InvariantCulture)}f, {vertices[i].y.ToString(CultureInfo.InvariantCulture)}f, {vertices[i].z.ToString(CultureInfo.InvariantCulture)}f),");
@@ -58,7 +58,7 @@ public class MeshToCodeWindow : Editor
         codeBuilder.AppendLine("        };");
 
         int[] triangles = mesh.triangles;
-        codeBuilder.AppendLine("        meshFilter.mesh.triangles = new int[] {");
+        codeBuilder.AppendLine("        meshFilter.sharedMesh.triangles = new int[] {");
         for (int i = 0; i < triangles.Length; i += 3)
         {
             codeBuilder.AppendLine($"            {triangles[i]}, {triangles[i + 1]}, {triangles[i + 2]},");
@@ -66,7 +66,7 @@ public class MeshToCodeWindow : Editor
         codeBuilder.AppendLine("        };");
 
         Vector3[] normals = mesh.normals;
-        codeBuilder.AppendLine("        meshFilter.mesh.normals = new Vector3[] {");
+        codeBuilder.AppendLine("        meshFilter.sharedMesh.normals = new Vector3[] {");
         for (int i = 0; i < normals.Length; i++)
         {
             codeBuilder.AppendLine($"            new Vector3({normals[i].x.ToString(CultureInfo.InvariantCulture)}f, {normals[i].y.ToString(CultureInfo.InvariantCulture)}f, {normals[i].z.ToString(CultureInfo.InvariantCulture)}f),");
@@ -74,7 +74,7 @@ public class MeshToCodeWindow : Editor
         codeBuilder.AppendLine("        };");
 
         Vector2[] uvs = mesh.uv;
-        codeBuilder.AppendLine("        meshFilter.mesh.uv = new Vector2[] {");
+        codeBuilder.AppendLine("        meshFilter.sharedMesh.uv = new Vector2[] {");
         for (int i = 0; i < uvs.Length; i++)
         {
             codeBuilder.AppendLine($"            new Vector2({uvs[i].x.ToString(CultureInfo.InvariantCulture)}f, {uvs[i].y.ToString(CultureInfo.InvariantCulture)}f),");
@@ -93,7 +93,9 @@ public class MeshToCodeWindow : Editor
         
         if (!string.IsNullOrEmpty(Path))
         {
+            Path = Path.Replace(".fbx", ".Cs");
             File.WriteAllText(Path, code);
+            AssetDatabase.Refresh();
             Debug.Log("Mesh code generated and saved to: " + Path);
         }
     }
