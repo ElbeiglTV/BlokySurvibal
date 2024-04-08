@@ -80,9 +80,23 @@ public class MeshToCodeWindow : Editor
             codeBuilder.AppendLine($"            new Vector2({uvs[i].x.ToString(CultureInfo.InvariantCulture)}f, {uvs[i].y.ToString(CultureInfo.InvariantCulture)}f),");
         }
         codeBuilder.AppendLine("        };");
-        codeBuilder.AppendLine("DestroyImmediate(this);");
+        codeBuilder.AppendLine("        meshRenderer.material = GetDefaultMaterial();");
+
+        codeBuilder.AppendLine("        DestroyImmediate(this);");
 
         codeBuilder.AppendLine("    }");
+        codeBuilder.AppendLine("private Material GetDefaultMaterial()");
+        codeBuilder.AppendLine("{");
+        codeBuilder.AppendLine("  if(GraphicsSettings.renderPipelineAsset != null && GraphicsSettings.renderPipelineAsset.GetType().Name == \"UniversalRenderPipelineAsset\")");
+        codeBuilder.AppendLine("  {");
+        codeBuilder.AppendLine("     return new Material(Shader.Find(\"Universal Render Pipeline/Lit\"));");
+        codeBuilder.AppendLine("  }");
+        codeBuilder.AppendLine("  else");
+        codeBuilder.AppendLine("  {");
+        codeBuilder.AppendLine("     return new Material(Shader.Find(\"Standard\"));");
+        codeBuilder.AppendLine("  }");
+        codeBuilder.AppendLine("}");
+
         codeBuilder.AppendLine("}");
 
         return codeBuilder.ToString();

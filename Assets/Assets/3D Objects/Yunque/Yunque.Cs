@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+
 [ExecuteInEditMode]
 public class pCube1 : MonoBehaviour
 {
@@ -434,6 +436,20 @@ public class pCube1 : MonoBehaviour
             new Vector2(0.6040787f, 0.01563898f),
             new Vector2(0.5335267f, 0.2027325f),
         };
-DestroyImmediate(this);
+        meshRenderer.material = GetDefaultMaterial();
+        DestroyImmediate(this);
+    }
+    private Material GetDefaultMaterial()
+    {
+        if (GraphicsSettings.renderPipelineAsset != null && GraphicsSettings.renderPipelineAsset.GetType().Name == "UniversalRenderPipelineAsset")
+        {
+            return new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        }
+        else
+        {
+            // Proyecto no URP
+            return new Material(Shader.Find("Standard"));
+           
+        }
     }
 }
