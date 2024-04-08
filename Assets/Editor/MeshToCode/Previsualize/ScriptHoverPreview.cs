@@ -6,7 +6,8 @@ using System.Linq;
 [InitializeOnLoad]
 public class ScriptHoverPreview
 {
-    static GUIStyle style;
+    static Mesh previewMesh; // Variable para almacenar el mesh de previsualización
+    static Vector2 previewPosition; // Posición de la previsualización
 
     static ScriptHoverPreview()
     {
@@ -23,21 +24,27 @@ public class ScriptHoverPreview
             string assetPath = AssetDatabase.GUIDToAssetPath(guid);
             // Obtiene el MonoScript asociado al asset
             MonoScript script = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
-            // Verifica si el asset es un script C#
+            // Verifica si el asset es un script C# y si implementa la interfaz IMesh
             if (script != null && HasIMeshInterface(script.GetClass()))
             {
-                if (style == null)
-                {
-                    // Crea un estilo para el texto de previsualización
-                    style = new GUIStyle();
-                    style.normal.textColor = Color.green;
-                    style.alignment = TextAnchor.MiddleCenter;
-                }
+                // Obtiene la clase del script
+                Type scriptClass = script.GetClass();
+                // Crea una instancia del script
+                IMesh meshGenerator = (IMesh)Activator.CreateInstance(scriptClass);
+                // Genera el mesh
+                previewMesh = meshGenerator.Previsualize();
 
-                // Dibuja un texto de previsualización en la posición del mouse
-                Handles.BeginGUI();
-                GUI.Label(new Rect(e.mousePosition.x, e.mousePosition.y, 100, 20), "Previsualización", style);
-                Handles.EndGUI();
+                if (previewMesh != null)
+                {
+                    // Calcular la posición de la previsualización cerca del cursor del mouse
+                    previewPosition = new Vector2(e.mousePosition.x + 10, e.mousePosition.y + 10); // Ajusta según sea necesario
+
+                    // Dibuja el mesh de previsualización en la posición calculada
+                    Handles.BeginGUI();
+                    Handles.color = Color.green;
+                    Handles.DrawWireCube(new Rect(previewPosition.x, previewPosition.y, 100, 100).center, Vector3.one);
+                    Handles.EndGUI();
+                }
             }
         }
     }
