@@ -5,37 +5,35 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 
-public class MeshToCodeWindow : EditorWindow
+public class MeshToCodeWindow : Editor
 {
     private Mesh meshToConvert;
 
-    [MenuItem("Tools/Mesh To Code")]
-    public static void ShowWindow()
+    [MenuItem("Assets/Convert/Mesh To Code", true)]
+    private static bool ValidateMeshToCode()
     {
-        GetWindow<MeshToCodeWindow>("Mesh To Code");
+        // Obtener la ruta del asset seleccionado
+        string selectedAssetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
+
+        // Habilitar el ítem del menú solo si el asset seleccionado es un Mesh
+        return !string.IsNullOrEmpty(selectedAssetPath) && AssetDatabase.LoadAssetAtPath<Mesh>(selectedAssetPath) != null;
+    }
+    [MenuItem("Assets/Convert/Mesh To Code")]
+    private static void MeshToCode()
+    {
+        // Obtener la ruta del asset seleccionado
+        string selectedAssetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
+
+        // Cargar el mesh desde el asset seleccionado
+        Mesh mesh = AssetDatabase.LoadAssetAtPath<Mesh>(selectedAssetPath);
+
+        // Ejecutar la función de procesamiento
+        SaveCodeToFile(ConvertMeshToCode(mesh), Selection.activeObject.name, selectedAssetPath);
     }
 
-    private void OnGUI()
-    {
-        GUILayout.Label("Convert Mesh To Code", EditorStyles.boldLabel);
 
-        meshToConvert = EditorGUILayout.ObjectField("Mesh to Convert", meshToConvert, typeof(Mesh), true) as Mesh;
 
-        if (GUILayout.Button("Generate Code"))
-        {
-            if (meshToConvert != null)
-            {
-                string generatedCode = ConvertMeshToCode(meshToConvert);
-                SaveCodeToFile(generatedCode, meshToConvert.name);
-            }
-            else
-            {
-                Debug.LogError("Mesh not provided!");
-            }
-        }
-    }
-
-    private string ConvertMeshToCode(Mesh mesh)
+    private static string ConvertMeshToCode(Mesh mesh)
     {
         StringBuilder codeBuilder = new StringBuilder();
 
@@ -90,13 +88,13 @@ public class MeshToCodeWindow : EditorWindow
         return codeBuilder.ToString();
     }
 
-    private void SaveCodeToFile(string code, string fileName)
+    private static void SaveCodeToFile(string code, string fileName,string Path)
     {
-        string filePath = EditorUtility.SaveFilePanel("Save Mesh Code", "", fileName + ".cs", "cs");
-        if (!string.IsNullOrEmpty(filePath))
+        
+        if (!string.IsNullOrEmpty(Path))
         {
-            File.WriteAllText(filePath, code);
-            Debug.Log("Mesh code generated and saved to: " + filePath);
+            File.WriteAllText(Path, code);
+            Debug.Log("Mesh code generated and saved to: " + Path);
         }
     }
 }
