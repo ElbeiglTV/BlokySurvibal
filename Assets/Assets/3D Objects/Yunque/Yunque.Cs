@@ -436,7 +436,7 @@ public class pCube1 : MonoBehaviour,IMesh
             new Vector2(0.5335267f, 0.2027325f),
         };
         meshRenderer.material = GetDefaultMaterial();
-        DestroyImmediate(this);
+       DestroyImmediate(this);
     }
     private Material GetDefaultMaterial()
     {
