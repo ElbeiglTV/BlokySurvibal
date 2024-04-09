@@ -25,13 +25,17 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHAPREMULTIPLY_ON
+  - _ALPHATEST_ON
+  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -41,8 +45,40 @@ Material:
         m_Texture: {fileID: 18700000, guid: c3ed8c3232c3f4d4f8d6a83c6c92fe1b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureBottomMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureBottomNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSidesMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSidesNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureTopMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureTopNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TexturesBottom:
         m_Texture: {fileID: 18700000, guid: 98f2525a44eb8264b89bacabd2ad57f5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TexturesBottomAlbedo:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TexturesSidesAlbedo:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TexturesToSides:
@@ -51,6 +87,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _TexturesTop:
         m_Texture: {fileID: 18700000, guid: 98f2525a44eb8264b89bacabd2ad57f5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TexturesTopAlbedo:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TexturesTopButtom:
@@ -72,15 +112,33 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 0.1
+    - _AlphaClip: 1
     - _AlphaOrCliping: 1
+    - _AlphaToMask: 0
     - _AmbienOclucion: 0
+    - _AmbienOclucionIntensity: 0
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _CastShadows: 1
     - _Clip: 0
+    - _ColorBrightness: 4
+    - _Color_Brightness_Reduction: 4
+    - _Cull: 2
+    - _DstBlend: 10
     - _Intencity: 1
     - _QueueControl: 1
     - _QueueOffset: 0
     - _Radius: 1.5
     - _Radius_1: 1
     - _Radius_2: 1
+    - _ReceiveShadows: 1
+    - _Smothness: 4
+    - _SrcBlend: 1
+    - _Surface: 1
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _ZWriteControl: 1
     m_Colors:
     - _PosMin: {r: 0, g: 0, b: 0, a: 0}
     - _Position: {r: 46.147854, g: 5.4481063, b: 49, a: 0}
