@@ -15,14 +15,18 @@ public class ScriptHoverPreview : Editor
     static float rotateMesh;
    
 
-
+    
     private void OnValidate()
     {
+        
         previewRenderUtility.Cleanup();
+        previewRenderUtility = null;
     }
 
     private void OnDisable()
     {
+        previewRenderUtility.Cleanup();
+        previewRenderUtility = null;
         Cleanup();
     }
     static ScriptHoverPreview()
@@ -129,12 +133,12 @@ public class ScriptHoverPreview : Editor
             previewRenderUtility.camera.clearFlags = CameraClearFlags.Nothing;
 
             // Preparar la previsualización
-            previewRenderUtility.BeginPreview(new Rect(previewPosition.x, previewPosition.y, 300, 300), GUIStyle.none);
+            previewRenderUtility.BeginStaticPreview(new Rect(previewPosition.x, previewPosition.y, 300, 300));
 
-            rotateMesh += 1;
+            rotateMesh += 10*Time.deltaTime;
             previewRenderUtility.DrawMesh(previewMesh,new Vector3(0,0,0),Quaternion.Euler(0,rotateMesh,0), DefaultMaterial(), 0);
             previewRenderUtility.camera.Render();
-            Texture previewTexture = previewRenderUtility.EndPreview();
+            Texture previewTexture = previewRenderUtility.EndStaticPreview();
 
 
             // Mostrar la previsualización

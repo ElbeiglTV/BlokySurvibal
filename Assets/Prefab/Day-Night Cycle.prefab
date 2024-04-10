@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChooseDayLength: 1
   Hours: 1
-  Minutes: 1
+  Minutes: 24
   Seconds: 60
 --- !u!1 &5674167016981234887
 GameObject:
