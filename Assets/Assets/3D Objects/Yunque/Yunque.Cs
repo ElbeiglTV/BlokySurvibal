@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 [ExecuteInEditMode]
-public class pCube1 : MonoBehaviour,IMesh
+public class Yunque : MonoBehaviour
 {
     void Start()
     {
@@ -436,7 +436,7 @@ public class pCube1 : MonoBehaviour,IMesh
             new Vector2(0.5335267f, 0.2027325f),
         };
         meshRenderer.material = GetDefaultMaterial();
-       DestroyImmediate(this);
+        DestroyImmediate(this);
     }
     private Material GetDefaultMaterial()
     {
@@ -449,6 +449,9 @@ public class pCube1 : MonoBehaviour,IMesh
             return new Material(Shader.Find("Standard"));
         }
     }
+}
+public class YunquePreview : IMesh
+{
     public Mesh Previsualize()
     {
        Mesh mesh = new Mesh();

@@ -28,19 +28,19 @@ public class MeshToCodeWindow : Editor
         Mesh mesh = AssetDatabase.LoadAssetAtPath<Mesh>(selectedAssetPath);
 
         // Ejecutar la función de procesamiento
-        SaveCodeToFile(ConvertMeshToCode(mesh), Selection.activeObject.name, selectedAssetPath);
+        SaveCodeToFile(ConvertMeshToCode(mesh, Selection.activeObject.name), selectedAssetPath);
     }
 
 
 
-    private static string ConvertMeshToCode(Mesh mesh)
+    private static string ConvertMeshToCode(Mesh mesh,string FileName)
     {
         StringBuilder codeBuilder = new StringBuilder();
 
         codeBuilder.AppendLine("using UnityEngine;");
         codeBuilder.AppendLine("using UnityEngine.Rendering;");
         codeBuilder.AppendLine("[ExecuteInEditMode]");
-        codeBuilder.AppendLine($"public class {mesh.name} : MonoBehaviour,IMesh"); // Cambia el nombre de la clase aquí
+        codeBuilder.AppendLine($"public class {FileName} : MonoBehaviour"); // Cambia el nombre de la clase aquí
         codeBuilder.AppendLine("{");
         codeBuilder.AppendLine("    void Start()");
         codeBuilder.AppendLine("    {");
@@ -97,6 +97,12 @@ public class MeshToCodeWindow : Editor
         codeBuilder.AppendLine("            return new Material(Shader.Find(\"Standard\"));");
         codeBuilder.AppendLine("        }");
         codeBuilder.AppendLine("    }");
+        codeBuilder.AppendLine("}");
+
+        
+        codeBuilder.AppendLine($"public class {FileName+"Preview"} : IMesh");
+        codeBuilder.AppendLine("{");
+
         codeBuilder.AppendLine("    public Mesh Previsualize()");
         codeBuilder.AppendLine("    {");
         codeBuilder.AppendLine("       Mesh mesh = new Mesh();");
@@ -137,7 +143,7 @@ public class MeshToCodeWindow : Editor
         return codeBuilder.ToString();
     }
 
-    private static void SaveCodeToFile(string code, string fileName,string Path)
+    private static void SaveCodeToFile(string code,string Path)
     {
         
         if (!string.IsNullOrEmpty(Path))

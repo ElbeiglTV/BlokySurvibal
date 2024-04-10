@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 [ExecuteInEditMode]
-public class Martillo : MonoBehaviour,IMesh
+public class Martillo : MonoBehaviour
 {
     void Start()
     {
@@ -585,6 +585,9 @@ public class Martillo : MonoBehaviour,IMesh
             return new Material(Shader.Find("Standard"));
         }
     }
+}
+public class MartilloPreview : IMesh
+{
     public Mesh Previsualize()
     {
        Mesh mesh = new Mesh();
