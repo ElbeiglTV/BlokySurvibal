@@ -37,7 +37,9 @@ public class MeshToCodeWindow : Editor
 
         // Asignar el icono al MonoScript
         EditorGUIUtility.SetIconForObject(generatedScript, customIcon);
-
+        // Almacenar la información del icono personalizado usando EditorPrefs
+        string iconPath = AssetDatabase.GetAssetPath(customIcon);
+        EditorPrefs.SetString(selectedAssetPath.Replace(".fbx", ".cs"), iconPath);
 
 
     }
@@ -165,4 +167,6 @@ public class MeshToCodeWindow : Editor
             Debug.Log("Mesh code generated and saved to: " + Path);
         }
     }
+    // Método para restaurar el icono personalizado después de la reimportación
+   
 }
