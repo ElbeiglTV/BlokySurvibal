@@ -38,6 +38,34 @@ public class IconCombiner : EditorWindow
         AssetDatabase.Refresh();
         Debug.Log("Combined icon saved to: " + path);
     }
+    [MenuItem("Tools/Obtain Icons")]
+    public static void ObtainIcons()
+    {
+        // Cargar los dos iconos que quieres combinar
+        Texture2D icon1 = EditorGUIUtility.IconContent("cs Script Icon").image as Texture2D;
+        Texture2D icon2 = EditorGUIUtility.IconContent("MeshFilter Icon").image as Texture2D;
+
+        // Ajustar el tamaño de ambas texturas para que tengan las mismas dimensiones
+        int width = Mathf.Max(icon1.width, icon2.width);
+        int height = Mathf.Max(icon1.height, icon2.height);
+        icon1 = ResizeTexture(icon1, width, height);
+        icon2 = ResizeTexture(icon2, width, height);
+
+        
+
+        // Guardar la textura combinada en una ubicación específica
+        string path = "Assets/Editor/cs Script Icon.png";
+        string path2 = "Assets/Editor/MeshFilter Icon.png";
+
+        byte[] bytes = icon1.EncodeToPNG();
+        byte[] bytes2 = icon2.EncodeToPNG();
+        File.WriteAllBytes(path, bytes);
+        File.WriteAllBytes(path2, bytes2);
+
+        // Refrescar el Asset Database para que Unity reconozca la nueva textura
+        AssetDatabase.Refresh();
+        Debug.Log("Combined icon saved to: " + path);
+    }
 
     private static Texture2D ResizeTexture(Texture2D texture, int width, int height)
     {
