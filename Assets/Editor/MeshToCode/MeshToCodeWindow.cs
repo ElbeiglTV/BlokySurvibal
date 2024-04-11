@@ -29,6 +29,17 @@ public class MeshToCodeWindow : Editor
 
         // Ejecutar la función de procesamiento
         SaveCodeToFile(ConvertMeshToCode(mesh, Selection.activeObject.name), selectedAssetPath);
+
+        MonoScript generatedScript = AssetDatabase.LoadAssetAtPath<MonoScript>(selectedAssetPath.Replace(".fbx", ".cs"));
+
+        // Cargar el icono personalizado
+        Texture2D customIcon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Editor/Icons/CustomIcon.png"); // Ajusta la ruta según donde tengas guardado tu icono
+
+        // Asignar el icono al MonoScript
+        EditorGUIUtility.SetIconForObject(generatedScript, customIcon);
+
+
+
     }
 
 

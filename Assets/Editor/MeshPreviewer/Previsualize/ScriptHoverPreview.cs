@@ -13,30 +13,31 @@ public class ScriptHoverPreview : Editor
     static Mesh previewMesh; // Variable para almacenar el mesh de previsualización
     static Vector2 previewPosition; // Posición de la previsualización
     static float rotateMesh;
-   
 
-    
-    private void OnValidate()
-    {
-        
-        previewRenderUtility.Cleanup();
-        previewRenderUtility = null;
-    }
 
-    private void OnDisable()
-    {
-        previewRenderUtility.Cleanup();
-        previewRenderUtility = null;
-        Cleanup();
-    }
     static ScriptHoverPreview()
     {
         previewRenderUtility = new PreviewRenderUtility();
         // Registra el evento de la ventana del proyecto
-        
+        AssemblyReloadEvents.beforeAssemblyReload += PreCompile;
         EditorApplication.projectWindowItemOnGUI += OnProjectWindowItemOnGUI;
     }
     
+    static void PreCompile()
+    {
+        EditorApplication.projectWindowItemOnGUI -= OnProjectWindowItemOnGUI;
+        previewRenderUtility.Cleanup();
+        previewRenderUtility = null;
+        
+    }
+   
+    private void OnDisable()
+    {
+        EditorApplication.projectWindowItemOnGUI -= OnProjectWindowItemOnGUI;
+        previewRenderUtility.Cleanup();
+        previewRenderUtility = null;
+        Cleanup();
+    }
 
     static void OnProjectWindowItemOnGUI(string guid, Rect selectionRect)
     {
@@ -56,7 +57,7 @@ public class ScriptHoverPreview : Editor
             {
                 
 
-                string className = script.GetClass().ToString();
+                string className = script.GetClass()?.ToString();
 
                 Type[] tipos = script.GetClass().Assembly.GetTypes();
 
@@ -147,7 +148,7 @@ public class ScriptHoverPreview : Editor
         }
         else if (previewRenderUtility != null)
         {
-            previewRenderUtility.Cleanup();
+            
 
         }
     }

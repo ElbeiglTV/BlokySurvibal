@@ -8,7 +8,14 @@ public class PreviewMesh : EditorWindow
     private float rotateMesh;
 
 
-
+    private void OnDisable()
+    {
+        if(m_PreviewRenderUtility != null)
+        {
+            m_PreviewRenderUtility.Cleanup();
+            m_PreviewRenderUtility = null;
+        }
+    }
     [MenuItem("Window/MeshViewer")]
     public static void ShowWindow()
     {
@@ -70,3 +77,4 @@ public class PreviewMesh : EditorWindow
         GUI.DrawTexture(new Rect(0, 0, position.width, position.height), previewTexture);
     }
 }
+
