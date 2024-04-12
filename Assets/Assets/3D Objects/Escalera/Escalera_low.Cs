@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 [ExecuteInEditMode]
-public class Escalera_low : MonoBehaviour
+public class Escalera_esquina_low : MonoBehaviour
 {
     void Start()
     {
@@ -172,7 +172,7 @@ public class Escalera_low : MonoBehaviour
         }
     }
 }
-public class Escalera_lowPreview : IMesh
+public class Escalera_esquina_lowPreview : IMesh
 {
     public Mesh Previsualize()
     {
