@@ -37,7 +37,7 @@ public class PreviewMesh : EditorWindow
         m_PreviewRenderUtility.camera.nearClipPlane = 0.3f;
         m_PreviewRenderUtility.camera.farClipPlane = 1000;
 
-
+        
 
         m_PreviewRenderUtility.camera.orthographic = true;
 
@@ -58,7 +58,7 @@ public class PreviewMesh : EditorWindow
             if (StaticViewerConfigs.PreviewMaterial == null)
             {
 
-                StaticViewerConfigs.PreviewMaterial = renderer.material;
+                StaticViewerConfigs.PreviewMaterial = renderer.sharedMaterial;
             }
 
             if (filter != null && renderer != null)
@@ -68,12 +68,11 @@ public class PreviewMesh : EditorWindow
                 float cameraDistance = bounds.size.magnitude * 2;
                 m_PreviewRenderUtility.camera.orthographicSize = bounds.size.magnitude;
 
-                m_PreviewRenderUtility.camera.transform.position = -(m_PreviewRenderUtility.camera.transform.forward * cameraDistance + new Vector3(0, -StaticViewerConfigs.Haigt, bounds.size.z));
+                m_PreviewRenderUtility.camera.transform.position = -(m_PreviewRenderUtility.camera.transform.forward * cameraDistance + new Vector3(0, -StaticViewerConfigs.Height, bounds.size.z));
                 m_PreviewRenderUtility.camera.transform.LookAt(bounds.center);
 
                 rotateMesh += StaticViewerConfigs.RotateSpeed * Time.deltaTime;
                 m_PreviewRenderUtility.DrawMesh(filter.sharedMesh, bounds.center, Quaternion.Euler(0, rotateMesh, 0), StaticViewerConfigs.PreviewMaterial, 0);
-                Repaint();
 
             }
         }
@@ -84,6 +83,7 @@ public class PreviewMesh : EditorWindow
 
         // Mostrar la previsualización
         GUI.DrawTexture(new Rect(0, 0, position.width, position.height), previewTexture);
+                Repaint();
     }
 }
 

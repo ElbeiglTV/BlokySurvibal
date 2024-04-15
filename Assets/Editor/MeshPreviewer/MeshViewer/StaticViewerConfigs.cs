@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class StaticViewerConfigs
 {
-    public static float Haigt;
+    public static float Height;
     public static float RotateSpeed;
     public static Material PreviewMaterial;
 }
