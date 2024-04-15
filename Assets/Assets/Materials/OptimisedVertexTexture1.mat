@@ -58,7 +58,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSidesNormal:
-        m_Texture: {fileID: 18700000, guid: f8c17671d13ce6541965339d4016fda0, type: 3}
+        m_Texture: {fileID: 18700000, guid: fbb253b2bface93419efc8173b247b24, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureTopMaskMap:
@@ -125,7 +125,7 @@ Material:
     - _Color_Brightness_Reduction: 5.48
     - _Cull: 2
     - _DstBlend: 10
-    - _Intencity: 8
+    - _Intencity: 1
     - _QueueControl: 1
     - _QueueOffset: 0
     - _Radius: 1.5
@@ -141,7 +141,7 @@ Material:
     - _ZWriteControl: 1
     m_Colors:
     - _PosMin: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: 58.719795, g: 5.922005, b: 49, a: 0}
-    - _Position_1: {r: 58.719795, g: 6.714024, b: 50, a: 0}
+    - _Position: {r: 59.909874, g: 4.2526326, b: 49, a: 0}
+    - _Position_1: {r: 59.90987, g: 5.044652, b: 50, a: 0}
     - _Position_2: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

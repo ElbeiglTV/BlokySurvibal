@@ -10,7 +10,7 @@ public class PreviewMesh : EditorWindow
 
     private void OnDisable()
     {
-        if(m_PreviewRenderUtility != null)
+        if (m_PreviewRenderUtility != null)
         {
             m_PreviewRenderUtility.Cleanup();
             m_PreviewRenderUtility = null;
@@ -19,9 +19,12 @@ public class PreviewMesh : EditorWindow
     [MenuItem("Window/MeshViewer")]
     public static void ShowWindow()
     {
-        var window =GetWindow<PreviewMesh>("Mesh Viewer");
+        var window = GetWindow<PreviewMesh>("Mesh Viewer");
         window.autoRepaintOnSceneChange = true;
         window.Show();
+        var window2 = GetWindow<ViewerConfig>("Mesh Viewer Configs");
+        window2.autoRepaintOnSceneChange = true;
+        window2.Show();
 
 
 
@@ -52,6 +55,12 @@ public class PreviewMesh : EditorWindow
             MeshFilter filter = Selection.activeGameObject.GetComponent<MeshFilter>();
             MeshRenderer renderer = Selection.activeGameObject.GetComponent<MeshRenderer>();
 
+            if (StaticViewerConfigs.PreviewMaterial == null)
+            {
+
+                StaticViewerConfigs.PreviewMaterial = renderer.material;
+            }
+
             if (filter != null && renderer != null)
             {
                 Bounds bounds = filter.sharedMesh.bounds;
@@ -59,11 +68,11 @@ public class PreviewMesh : EditorWindow
                 float cameraDistance = bounds.size.magnitude * 2;
                 m_PreviewRenderUtility.camera.orthographicSize = bounds.size.magnitude;
 
-                m_PreviewRenderUtility.camera.transform.position = -(m_PreviewRenderUtility.camera.transform.forward * cameraDistance + new Vector3(0, -bounds.size.y, bounds.size.z));
+                m_PreviewRenderUtility.camera.transform.position = -(m_PreviewRenderUtility.camera.transform.forward * cameraDistance + new Vector3(0, -StaticViewerConfigs.Haigt, bounds.size.z));
                 m_PreviewRenderUtility.camera.transform.LookAt(bounds.center);
 
-                rotateMesh += 10 * Time.deltaTime;
-                m_PreviewRenderUtility.DrawMesh(filter.sharedMesh, bounds.center, Quaternion.Euler(0, rotateMesh, 0), renderer.sharedMaterial, 0);
+                rotateMesh += StaticViewerConfigs.RotateSpeed * Time.deltaTime;
+                m_PreviewRenderUtility.DrawMesh(filter.sharedMesh, bounds.center, Quaternion.Euler(0, rotateMesh, 0), StaticViewerConfigs.PreviewMaterial, 0);
                 Repaint();
 
             }
