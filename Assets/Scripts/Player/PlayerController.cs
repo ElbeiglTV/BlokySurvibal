@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            _inputCheck = controller.GetMovementInput().normalized.magnitude;
             _input = controller.GetMovementInput();
         }
 

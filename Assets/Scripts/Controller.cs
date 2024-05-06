@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Controller : MonoBehaviour
 {
-    public Vector3 input;
+    public Vector3 _moveDir;
 
     public abstract Vector3 GetMovementInput();
 
