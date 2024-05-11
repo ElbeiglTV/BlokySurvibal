@@ -107,9 +107,12 @@ public class SceneCameraOverlayTool
     }
     static void DrawTexture(byte textId, float sceneWith)
     {
-        if (textId == 1) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("dirt"));
-        else if (textId == 2) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("cobblestone"));
-        else if (textId == 3) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("wood"));
+        if (textId == 1) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("1"));
+        else if (textId == 2) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("2"));
+        else if (textId == 3) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("3"));
+        else if (textId == 4) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("4"));
+        else if (textId == 5) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("5"));
+        else if (textId == 6) GUI.DrawTexture(new Rect(sceneWith - 120, 300, 100, 100), Resources.Load<Texture2D>("6"));
 
     }
 }
