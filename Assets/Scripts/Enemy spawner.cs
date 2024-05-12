@@ -6,20 +6,31 @@ public class Enemyspawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public float spawnRate = 2f;
-    public float spawnRadius = 5f;
+    
 
-    void Start()
+    public void Start()
     {
         StartCoroutine(SpawnEnemy());
     }
 
+   
+
     IEnumerator SpawnEnemy()
     {
-        while (true)
+        if (enemyPrefab.activeSelf)
         {
-            Vector3 randomSpawnPos = transform.position + Random.insideUnitSphere * spawnRadius;
-            Instantiate(enemyPrefab, randomSpawnPos, Quaternion.identity);
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForEndOfFrame();
+            StartCoroutine(SpawnEnemy());
+
         }
+        else
+        {
+             yield return new WaitForSeconds(spawnRate);
+            enemyPrefab.SetActive(true);
+            enemyPrefab.transform.position = transform.position;
+            StartCoroutine(SpawnEnemy());
+        }
+       
+        
     }
 }
