@@ -16,9 +16,9 @@ MonoBehaviour:
   woodRandomRangeMaxAmount: 6
   stoneRandomRangeMinAmount: 3
   stoneRandomRangeMaxAmount: 7
-  goldRandomRangeMinAmount: 0
-  goldRandomRangeMaxAmount: 0
+  goldRandomRangeMinAmount: 1
+  goldRandomRangeMaxAmount: 4
   bricksRandomRangeMinAmount: 0
-  bricksRandomRangeMaxAmount: 0
-  bricksProbability: 0
-  bricksPerLevel: 0
+  bricksRandomRangeMaxAmount: 3
+  bricksProbability: 10
+  bricksPerLevel: 10
