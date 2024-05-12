@@ -210,6 +210,13 @@ public class Container : MonoBehaviour
             }
         }
     }
+    [ContextMenu("ChangeDataLink")]
+    public void ChangeDataLink()
+    {
+      Dictionary<Vector3, Voxel> dataDictionary = data.Overrite();
+        data = new SerialisedDictionary<Vector3, Voxel>();
+        data.IgualeTo(dataDictionary);
+    }
     /*public void ReloadColorsWithCoolDown()
     {
 

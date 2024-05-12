@@ -16,35 +16,26 @@ public class ResourcesManager : MonoBehaviour
         else Destroy(gameObject);
     }
     #endregion
-    #region ResourcesInfo
-    int _wood = default;
-    int _stone = default;
-    int _gold = default;
-    int _currency = default;
-    #endregion
+ 
     #region ResourcesGeter/Seters;
     public int wood
     {
-        get
-        {
-            return _wood;
-        }
         set
         {
-            if (_wood + value <= 0)
+            if (Statics.wood + value <= 0)
             {
-                _wood = 0;
+                Statics.wood = 0;
                 if (WoodUi != null)
                 {
-                    WoodUi.text = _wood.ToString();
+                    WoodUi.text = Statics.wood.ToString();
                 }
             }
             else
             {
-                _wood += value;
+                Statics.wood += value;
                 if (WoodUi != null)
                 {
-                    WoodUi.text = _wood.ToString();
+                    WoodUi.text = Statics.wood.ToString();
                 }
             }
 
@@ -52,67 +43,57 @@ public class ResourcesManager : MonoBehaviour
     }
     public int stone
     {
-        get
-        {
-            return _stone;
-        }
         set
         {
-            if (_stone + value <= 0)
+            if (Statics.stone + value <= 0)
             {
-                _stone = 0;
+                Statics.stone = 0;
                 if (StoneUi != null)
                 {
-                    StoneUi.text = _stone.ToString();
+                    StoneUi.text = Statics.stone.ToString();
                 }
             }
             else
             {
-                _stone += value;
+                Statics.stone += value;
                 if (StoneUi != null)
                 {
-                    StoneUi.text = _stone.ToString();
+                    StoneUi.text = Statics.stone.ToString();
                 }
             }
         }
     }
     public int gold
     {
-        get
-        {
-            return _gold;
-        }
+       
         set
         {
-            if (_gold + value <= 0)
+            if (Statics.gold + value <= 0)
             {
-                _gold = 0;
+                Statics.gold = 0;
                 if (GoldUi != null)
                 {
-                    GoldUi.text = _gold.ToString();
+                    GoldUi.text = Statics.gold.ToString();
                 }
             }
             else
             {
-                _gold += value;
+                Statics.gold += value;
                 if (GoldUi != null)
                 {
-                    GoldUi.text = _gold.ToString();
+                    GoldUi.text = Statics.gold.ToString();
                 }
             }
         }
     }
     public int currency
     {
-        get
-        {
-            return _currency;
-        }
+       
         set
         {
-            if (_currency + value <= 0)
+            if (Statics.currency + value <= 0)
             {
-                _currency = 0;
+                Statics.currency = 0;
             }
             //if (_currency + value >= maxValue)
             //{
