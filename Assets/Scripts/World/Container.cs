@@ -216,7 +216,11 @@ public class Container : MonoBehaviour
       Dictionary<Vector3, Voxel> dataDictionary = data.Overrite();
         data = new SerialisedDictionary<Vector3, Voxel>();
         data.IgualeTo(dataDictionary);
+        meshData = new MeshData();
+        solidData = new List<Voxel>();
+        ReloadChunck();
     }
+    #region NO SIRVE
     /*public void ReloadColorsWithCoolDown()
     {
 
@@ -386,14 +390,8 @@ public class Container : MonoBehaviour
 
         }
         UploadMesh();
-
-
-        
-
-        
-        
     }*/
-
+    #endregion
     public void UploadMesh()
     {
         meshData.UploadMesh();
