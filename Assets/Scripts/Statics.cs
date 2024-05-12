@@ -9,6 +9,7 @@ public static class Statics
     public static int stone = default;
     public static int gold = default;
     public static int currency = default;
+    public static int Stamina = default;
 
     public static void Reset()
     {
@@ -16,5 +17,6 @@ public static class Statics
         stone = 0;
         gold = 0;
         currency = 0;
+        Stamina = 0;
     }
 }

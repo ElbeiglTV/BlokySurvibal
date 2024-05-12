@@ -10,6 +10,8 @@ public class StaticsData
             stone = Statics.stone;
             gold = Statics.gold;
             currency = Statics.currency;
+            stamina = Statics.Stamina;
+            
         }
         else
         {
@@ -17,6 +19,7 @@ public class StaticsData
             stone = 0;
             gold = 0;
             currency = 0;
+            stamina = 0;
         }
     }
     public void ActualizeStatics()
@@ -25,6 +28,7 @@ public class StaticsData
         Statics.stone = stone;
         Statics.gold = gold;
         Statics.currency = currency;
+        Statics.Stamina = stamina;
     }
 
 
@@ -32,4 +36,5 @@ public class StaticsData
     public int stone = default;
     public int gold = default;
     public int currency = default;
+    public int stamina = default;
 }
