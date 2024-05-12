@@ -10,10 +10,12 @@ public class Tree : Resource, IreColectable
     public GameObject Particle;
     public GameObject Select;
     private int _orginalLife;
+    private ResourceController _resourceController;
 
     private void Awake()
     {
         _orginalLife = life;
+        _resourceController = Resources.Load<ResourceController>("ResourceManager");
     }
     private void OnEnable()
     {
@@ -29,6 +31,7 @@ public class Tree : Resource, IreColectable
         life -= Damage;
         if(life<= 0)
         {
+            value = Random.Range(_resourceController.woodRandomRangeMinAmount, _resourceController.woodRandomRangeMaxAmount+1);
             ResourcesManager.instance.wood = value;
             num.text = "+"+value.ToString();
             Particle.SetActive(false);
