@@ -24,6 +24,7 @@ public class SerialisedDictionary<Tkey, Tvalue>
     }
     public void IgualeTo(Dictionary<Tkey, Tvalue> NormalDictionary)
     {
+        Clear();
         foreach (var kvp in NormalDictionary)
         {
             Add(kvp.Key, kvp.Value);
