@@ -223,9 +223,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1291294891753768873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b666ddc54c92c9479c69bbf649d6d5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 85a9be0e803935d448b21613112c9afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveDir: {x: 0, y: 0, z: 0}
   _maxMagnitude: 150
 --- !u!1 &3644178409717749195
 GameObject:

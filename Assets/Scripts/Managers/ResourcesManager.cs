@@ -101,10 +101,5 @@ public class ResourcesManager : MonoBehaviour
             //}
         }
     }
-
-
     #endregion
-
-
-
 }
