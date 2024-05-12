@@ -5,7 +5,7 @@ using UnityEngine;
 public class DistanceAgent : SteerinAgent
 {
     //Fijar objetivo
-    public SteerinAgent target;
+    public Transform player;
 
     //fijar un maximo y un minimo de distancia 
     [SerializeField] private float _minDistance;
@@ -16,11 +16,12 @@ public class DistanceAgent : SteerinAgent
         //wn caso que la distancia maxima sea mayor a la menor acercarce caso contrario alejarse
         if(_maxDistance > _minDistance)
         {
-            AddForce(Pursuit(target));
+            AddForce(Seek(player.position));
         }
-        else
+        else 
         {
-            AddForce(Evade(target));
+            AddForce(Flee(player.position));
+            Debug.Log("me asusto");
         }
         //ejecuta el movimiento
         Move();
@@ -31,10 +32,10 @@ public class DistanceAgent : SteerinAgent
     {
         //gizmo utilizado para visualizar la maxima distancia
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(target.transform.position, _maxDistance);
+        Gizmos.DrawWireSphere(player.transform.position, _maxDistance);
 
         //gizmo utilizado para visualizar la minima distancia
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(target.transform.position, _minDistance);
+        Gizmos.DrawWireSphere(player.transform.position, _minDistance);
     }
 }

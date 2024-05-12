@@ -5,12 +5,13 @@ using UnityEngine;
 public class PursuitAgent : SteerinAgent
 {
     //Fijar objetivo
-    public SteerinAgent target;
+    public Transform player;
 
     private void Update()
     {
+       
         //Añade fuerza necesaria para perseguir al objetivo marcado
-        AddForce(Pursuit(target));
+        AddForce(Seek(player.position));
 
         //ejecuta el movimiento
         Move();

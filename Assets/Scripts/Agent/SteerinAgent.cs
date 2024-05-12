@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SteerinAgent :MonoBehaviour
 {
+
     //inicializa la velocidad
     private Vector3 _velocity;
 
@@ -17,7 +18,7 @@ public class SteerinAgent :MonoBehaviour
     protected void Move()
     {
         transform.position += _velocity * Time.deltaTime;
-        transform.forward = _velocity;
+        transform.forward = new Vector3 (_velocity.x, 0, _velocity.z);
     }
 
     //le da la fuerza necesaria con la cual se movera
@@ -61,7 +62,12 @@ public class SteerinAgent :MonoBehaviour
         return -Pursuit(agent);
     }
 
-    
+    protected Vector3 Flee(Vector3 target)
+    {
+        return -Seek(target);
+    }
+
+
 }
 
 
