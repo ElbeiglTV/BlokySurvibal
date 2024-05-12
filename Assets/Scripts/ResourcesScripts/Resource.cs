@@ -5,6 +5,6 @@ using UnityEngine;
 public class Resource : MonoBehaviour
 {
     public int life;
-    public int value = default;
+    protected int value = default;
     public int size;
 }
