@@ -10,6 +10,7 @@ public static class Statics
     public static int gold = default;
     public static int currency = default;
     public static int Stamina = default;
+    public static int MaxStamina = 20;
 
     public static void Reset()
     {

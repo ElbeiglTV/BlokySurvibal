@@ -40,7 +40,7 @@ Material:
     m_Floats:
     - _Animated: 1
     - _Animation_Speed: 3
-    - _Border_Thickness: 1.05
+    - _Border_Thickness: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
