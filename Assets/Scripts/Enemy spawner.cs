@@ -7,9 +7,12 @@ public class Enemyspawner : MonoBehaviour
     public GameObject enemyPrefab;
     public float spawnRate = 2f;
     
+    
+    
 
     public void Start()
     {
+        
         StartCoroutine(SpawnEnemy());
     }
 

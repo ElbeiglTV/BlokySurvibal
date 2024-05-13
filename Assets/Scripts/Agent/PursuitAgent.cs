@@ -7,6 +7,9 @@ public class PursuitAgent : SteerinAgent
 {
     //Fijar objetivo
     public Transform player;
+
+    public Transform spawner;
+
     private float _currentSpeed;
     private float _currentForce;
     
@@ -15,6 +18,7 @@ public class PursuitAgent : SteerinAgent
 
     private void Start()
     {
+         radius = _visionDistance;
         _currentSpeed = _maxSpeed;
         _currentForce = _maxForce;
     }
@@ -22,8 +26,6 @@ public class PursuitAgent : SteerinAgent
     private void Update()
     {
         CheckDistanceAndMove();
-
-
     }
 
     private void CheckDistanceAndMove()
@@ -31,24 +33,22 @@ public class PursuitAgent : SteerinAgent
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer > _maxDistance && distanceToPlayer < _visionDistance)
         {
-            Movement();
+            //Añade fuerza necesaria para perseguir al objetivo marcado
+            AddForce(Seek(player.position));
+            //ejecuta el movimiento
+            Move();
         }
-        else if (distanceToPlayer < _maxDistance)
+         else if (distanceToPlayer >= _maxDistance && Vector3.Distance(spawner.position, transform.position) > 0.2f)
         {
-            _currentSpeed = 0;
-            _currentForce = 0;
+            AddForce(Arrive(spawner.position));
+            //ejecuta el movimiento
+            Move();
         }
-       
+
+        
+
     }
 
-    private void Movement()
-    {
-        //Añade fuerza necesaria para perseguir al objetivo marcado
-        AddForce(Seek(player.position));
-
-        //ejecuta el movimiento
-        Move();
-    }
 
     private void OnDrawGizmos()
     {
@@ -58,6 +58,13 @@ public class PursuitAgent : SteerinAgent
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(player.transform.position, _visionDistance);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(spawner.transform.position, radius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, _velocity);
+
+        
+
     }
 
 }

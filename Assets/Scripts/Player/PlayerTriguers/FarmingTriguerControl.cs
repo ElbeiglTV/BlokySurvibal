@@ -12,6 +12,9 @@ public class FarmingTriguerControl : MonoBehaviour
     public Transform rotateTarget;// se movera hacia el obj que estemos rompiendo;
     public Animator myAnimator;
 
+    public GameObject bala;
+    public Transform spawner;
+
     IreColectable colectable;
 
     private void Start()
@@ -25,7 +28,8 @@ public class FarmingTriguerControl : MonoBehaviour
             if (!colectable.ActiveSelf())
             {
                 myAnimator.SetBool("Talando", false);
-                colectable.TogleSelect(false);
+                myAnimator.SetBool("Shoot", false);
+              //  colectable.TogleSelect(false);
                 colectable = null;
             }
         }
@@ -44,10 +48,21 @@ public class FarmingTriguerControl : MonoBehaviour
                 rotateTarget.position = new Vector3(other.transform.position.x, rotateTarget.position.y, other.transform.position.z);
             }
         }
+
+        if (other.CompareTag("Enemy")) // si el colider tiene la tag Enemy tonces activo anim shoot
+        {
+            if (controller.GetInput().magnitude == 0)
+            {
+                colectable = other.GetComponent<IreColectable>();
+                myAnimator.SetBool("Shoot", true);
+                //colectable.TogleSelect(true);
+                rotateTarget.position = new Vector3(other.transform.position.x, rotateTarget.position.y, other.transform.position.z);
+            }
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Tree")) // si el colider tiene la tag arbol tonces activo anim talar
+        if (other.CompareTag("Tree")) // si el colider tiene la tag Tree tonces activo anim talar
         {
             if (other.GetComponent<IreColectable>() == colectable)
             {
@@ -55,8 +70,16 @@ public class FarmingTriguerControl : MonoBehaviour
                 colectable = null;
             }
             myAnimator.SetBool("Talando", false);
+        }
 
-
+        if (other.CompareTag("Enemy")) // si el colider tiene la tag Enemy tonces activo anim shoot
+        {
+            if (other.GetComponent<IreColectable>() == colectable)
+            {
+                //colectable.TogleSelect(false);
+                colectable = null;
+            }
+            myAnimator.SetBool("Shoot", false);
         }
     }
 
@@ -64,5 +87,17 @@ public class FarmingTriguerControl : MonoBehaviour
     public void Colect()
     {
         colectable?.Colect(1);
+    }
+
+    public void Shoot()
+    {
+        if (colectable != null)
+        {
+            GameObject bullet = Instantiate(bala);
+            bullet.transform.position = spawner.position;
+            bullet.transform.right = spawner.right;
+            bullet.GetComponent<Bullet>().target = colectable.GetObject().transform;
+        }
+
     }
 }

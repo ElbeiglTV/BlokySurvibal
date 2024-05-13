@@ -6,13 +6,15 @@ public class SteerinAgent :MonoBehaviour
 {
 
     //inicializa la velocidad
-    private Vector3 _velocity;
+    protected Vector3 _velocity;
 
     //limita hasta que velocidad puede alcanzar
     [SerializeField] protected float _maxSpeed;
 
     //un rango de con que tanta fuerza el objeto se movera
     [Range(0,0.15f)][SerializeField] protected float _maxForce;
+
+    public float radius;
 
     //ejecuta y normaliza el tiempo de ejecucion del movimiento
     protected void Move()
@@ -31,6 +33,19 @@ public class SteerinAgent :MonoBehaviour
     protected Vector3 Seek(Vector3 target)
     {
         return CalculateSteering((target - transform.position).normalized * _maxSpeed);
+    }
+
+    protected Vector3 Seek(Vector3 target, float speed)
+    {
+
+        return CalculateSteering((target - transform.position).normalized *speed);
+
+    }
+    protected Vector3 Arrive(Vector3 target)
+    {
+        float distance = Vector3.Distance(target, transform.position);
+        if (distance > radius)return Seek(target);
+            return Seek(target, _maxSpeed * (distance/radius));
     }
 
     //fija al objetivo
@@ -66,6 +81,7 @@ public class SteerinAgent :MonoBehaviour
     {
         return -Seek(target);
     }
+
 
 
 }

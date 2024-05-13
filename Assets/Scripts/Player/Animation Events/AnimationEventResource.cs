@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class AnimationEventResource : MonoBehaviour
 {
+   
     public FarmingTriguerControl control;
    public void Collect()
     {
         control.Colect();
     }
+
+    public void AtackEvent()
+    {
+        control.Shoot();
+
+    } 
 }

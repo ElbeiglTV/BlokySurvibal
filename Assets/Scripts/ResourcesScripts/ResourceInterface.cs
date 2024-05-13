@@ -11,4 +11,5 @@ public interface IreColectable
     public void Colect(int Damage);
     public bool ActiveSelf();
     public void TogleSelect(bool mbool);
+    public GameObject GetObject();
 }

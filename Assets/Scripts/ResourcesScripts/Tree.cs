@@ -44,4 +44,9 @@ public class Tree : Resource, IreColectable
     {
         Select.SetActive(mbool);
     }
+
+    public GameObject GetObject()
+    {
+        return gameObject;
+    }
 }
