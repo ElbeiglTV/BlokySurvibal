@@ -32,12 +32,25 @@ public class PursuitAgent : SteerinAgent
             AddForce(Seek(player.position));
             //ejecuta el movimiento
             Move();
+            anim.SetBool("run",true);
+            anim.SetBool("attack", false);
         }
-         else if (distanceToPlayer >= _maxDistance && Vector3.Distance(spawner.position, transform.position) > 0.2f)
+        else if (distanceToPlayer <= _maxDistance)
+        {
+            anim.SetBool("attack", true);
+        }
+         else if (distanceToPlayer >= _maxDistance && Vector3.Distance(spawner.position, transform.position) > 1f)
         {
             AddForce(Arrive(spawner.position));
             //ejecuta el movimiento
             Move();
+            anim.SetBool("run", true);
+            anim.SetBool("attack", false);
+        }
+        else
+        {
+            anim.SetBool("run", false);
+            anim.SetBool("attack", false);
         }
 
         

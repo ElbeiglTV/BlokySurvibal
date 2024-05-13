@@ -10,11 +10,19 @@ public class LifeManager : MonoBehaviour,IDamageable
     public delegate void Kill();
     public event Kill onKill;
 
+    private void Start()
+    {
+        //_life = maxLife;
+    }
+
     public void Damage(float damage)
     {
-        _life -= damage;
-        if (_life <= 0)
+        maxLife -= damage;
+        if (maxLife <= 0)
+        {
             onKill?.Invoke();
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+           
     }
 }
