@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Globalization;
 
-public class Enemy : Resource, IreColectable
+public class Rock : Resource, IreColectable
 {
     public TMP_Text num;
     public GameObject Particle;
@@ -31,8 +31,8 @@ public class Enemy : Resource, IreColectable
         life -= Damage;
         if (life <= 0)
         {
-            value = Random.Range(_resourceController.goldRandomRangeMinAmount, _resourceController.goldRandomRangeMaxAmount + 1);
-            ResourcesManager.instance.gold = value;
+            value = Random.Range(_resourceController.stoneRandomRangeMinAmount, _resourceController.stoneRandomRangeMaxAmount + 1);
+            ResourcesManager.instance.stone = value;
             num.text = "+" + value.ToString();
             Particle.SetActive(false);
             Particle.SetActive(true);
