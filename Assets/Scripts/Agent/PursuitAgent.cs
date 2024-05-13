@@ -10,6 +10,8 @@ public class PursuitAgent : SteerinAgent
 
     public Transform spawner;
 
+    public Animator anim;
+
     private float _currentSpeed;
     private float _currentForce;
     
@@ -18,12 +20,10 @@ public class PursuitAgent : SteerinAgent
 
     private void Start()
     {
-         radius = _visionDistance;
-        _currentSpeed = _maxSpeed;
-        _currentForce = _maxForce;
+        UpdateManager.OnUpdate += ManagedUpdate;
     }
 
-    private void Update()
+    private void ManagedUpdate()
     {
         CheckDistanceAndMove();
     }
