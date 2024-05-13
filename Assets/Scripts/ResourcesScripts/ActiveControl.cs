@@ -8,13 +8,7 @@ public class ActiveControl : MonoBehaviour
     private bool _OneTimer;
     [SerializeField] int _RespawnCooldownTimer;
 
-    void Start()
-    {
-        UpdateManager.OnUpdate += ManagedUpdate;
-    }
-
-
-    void ManagedUpdate()
+    void Update()
     {
         if (!ObjectToRespawn.activeSelf && !_OneTimer)
         {

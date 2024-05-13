@@ -16,8 +16,8 @@ public class UpdateManager : MonoBehaviour
     public static event Action OnFixedUpdate;
 
     private void Awake()
-    { 
-        if(_instance == null) _instance = this;
+    {
+        if (_instance == null) _instance = this;
         else Destroy(gameObject);
     }
 

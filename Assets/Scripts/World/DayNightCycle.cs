@@ -37,12 +37,7 @@ public class DayNightCycle : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        UpdateManager.OnUpdate += ManagedUpdate;
-    }
-
-    void ManagedUpdate()
+    void Update()
     {
         switch (ChooseDayLength)
         {

@@ -24,12 +24,10 @@ public class PlayerController : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         moveSystem.characterController = _characterController;
-        UpdateManager.OnUpdate += ManagedUpdate;
-
     }
 
     // Update is called once per frame
-    void ManagedUpdate()
+    void Update()
     {
         InputUpdater();
         moveSystem.Update(_input);

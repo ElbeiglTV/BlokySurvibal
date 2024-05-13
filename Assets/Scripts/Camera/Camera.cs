@@ -10,37 +10,19 @@ public class Camera : MonoBehaviour
     public float maxRadius;
     //int _iterations = 0;
 
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        UpdateManager.OnUpdate += ManagedUpdate;
-        UpdateManager.OnFixedUpdate += ManagedFixedUpdate;
-    }
-
-    void ManagedUpdate()
+    void Update()
     {
         transform.position = target.position + offset;
         transform.rotation = Quaternion.Euler(rotation);
-
-
-
     }
 
-    void ManagedFixedUpdate()
+    void FixedUpdate()
     {
         TransparencyControl(Vector3.zero);
-
-
     }
 
     void TransparencyControl(Vector3 rayOffSet)
     {
-
-
         float Radius;
         if (Physics.Linecast(transform.position + rayOffSet, target.position, out RaycastHit hitInfo, terrainMask))
         {
@@ -56,8 +38,6 @@ public class Camera : MonoBehaviour
                 mat.SetFloat("_Radius", Radius);
                 mat.SetFloat("_Intencity", 8);
             }
-
-
         }
         else
         {
@@ -76,9 +56,5 @@ public class Camera : MonoBehaviour
             foreach (Material mat in mat)
                 mat.SetFloat("_Intencity", 1);
         }
-
-
     }
-
-
 }

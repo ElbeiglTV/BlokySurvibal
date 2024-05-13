@@ -18,12 +18,7 @@ public class PursuitAgent : SteerinAgent
     [SerializeField] private float _maxDistance;
     [SerializeField] private float _visionDistance;
 
-    private void Start()
-    {
-        UpdateManager.OnUpdate += ManagedUpdate;
-    }
-
-    private void ManagedUpdate()
+    private void Update()
     {
         CheckDistanceAndMove();
     }
