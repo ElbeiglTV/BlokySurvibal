@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
 {
-    SaveSystem instance;
+    public static SaveSystem instance;
     
 
     private void Awake()
@@ -25,7 +25,7 @@ public class SaveSystem : MonoBehaviour
         Load();
     }
 
-    StaticsData staticsData = new StaticsData(false);
+    public StaticsData staticsData = new StaticsData(false);
 
     public void Save()
     {

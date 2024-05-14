@@ -37,6 +37,7 @@ public class Enemy : Resource, IreColectable
             Particle.SetActive(false);
             Particle.SetActive(true);
             gameObject.SetActive(false);
+            SaveSystem.instance.Save();
         }
     }
 

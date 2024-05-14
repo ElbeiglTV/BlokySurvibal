@@ -25,7 +25,7 @@ public class Bullet : SteerinAgent
 
         if (Vector3.Distance(target.position, transform.position) <= 0.2f)
         {
-            target.GetComponent<IreColectable>().Colect(1);
+            target.GetComponent<IreColectable>().Colect(Statics.playerBaseDamage);
             UpdateManager.OnUpdate -= ManagedUpdate;
             Destroy(gameObject);
 

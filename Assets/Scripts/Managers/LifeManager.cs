@@ -5,20 +5,22 @@ using UnityEngine;
 public class LifeManager : MonoBehaviour,IDamageable
 {
     float _life;
-    public float maxLife;
+    public float myLife;
 
     public delegate void Kill();
     public event Kill onKill;
 
-    private void Start()
+    private IEnumerator Start()
     {
-        //_life = maxLife;
+        yield return new WaitForSecondsRealtime(0.2f);
+       myLife = Statics.playerMaxHealth;
+        Debug.Log(Statics.playerMaxHealth);
     }
 
     public void Damage(float damage)
     {
-        maxLife -= damage;
-        if (maxLife <= 0)
+        myLife -= damage;
+        if (myLife <= 0)
         {
             onKill?.Invoke();
             gameObject.SetActive(false);

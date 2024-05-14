@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class UpgradeButons : MonoBehaviour
     public List<GameObject> UpgradeList;
     public int BaseWoodUpgradeCost;
     public int BaseStoneUpgradeCost;
+
+    public event Action OnFinishUpgrade;
 
     public void UpgradeBase()
     {
@@ -18,6 +21,7 @@ public class UpgradeButons : MonoBehaviour
             ResourcesManager.instance.wood = -BaseWoodUpgradeCost;
             ResourcesManager.instance.stone = -BaseStoneUpgradeCost;
         }
+        if (UpgradeIndex >= UpgradeList.Count - 1) OnFinishUpgrade?.Invoke();
     }
 
 }
