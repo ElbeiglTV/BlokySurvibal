@@ -19,9 +19,9 @@ public class FarmingTriguerControl : MonoBehaviour
 
     private void Start()
     {
-        UpdateManager.OnUpdate += ManagedUpdate;
+       
     }
-    private void ManagedUpdate()
+    private void Update()
     {
         if (colectable != null)
         {

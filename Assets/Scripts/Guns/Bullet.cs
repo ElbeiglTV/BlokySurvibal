@@ -4,17 +4,13 @@ public class Bullet : SteerinAgent
 {
     public Transform target;
 
-    void Start()
-    {
-        UpdateManager.OnUpdate += ManagedUpdate;
-    }
+    
 
-
-    void ManagedUpdate()
+    void Update()
     {
         if (target == null)
         {
-            UpdateManager.OnUpdate -= ManagedUpdate;
+            
             Destroy(gameObject);
             return;
         }
@@ -26,7 +22,7 @@ public class Bullet : SteerinAgent
         if (Vector3.Distance(target.position, transform.position) <= 0.2f)
         {
             target.GetComponent<IreColectable>().Colect(Statics.playerBaseDamage);
-            UpdateManager.OnUpdate -= ManagedUpdate;
+            
             Destroy(gameObject);
 
         }

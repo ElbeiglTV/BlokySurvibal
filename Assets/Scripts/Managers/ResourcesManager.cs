@@ -16,7 +16,13 @@ public class ResourcesManager : MonoBehaviour
         else Destroy(gameObject);
     }
     #endregion
- 
+
+    private void Start()
+    {
+        WoodUi.text = Statics.wood.ToString();
+        StoneUi.text = Statics.stone.ToString();
+        GoldUi.text = Statics.gold.ToString();
+    }
     #region ResourcesGeter/Seters;
     public int wood
     {
