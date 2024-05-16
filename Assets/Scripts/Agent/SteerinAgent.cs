@@ -8,14 +8,6 @@ public class SteerinAgent :MonoBehaviour
     //inicializa la velocidad
     protected Vector3 _velocity;
 
-    //limita hasta que velocidad puede alcanzar
-    [SerializeField] protected float _maxSpeed;
-
-    //un rango de con que tanta fuerza el objeto se movera
-    [Range(0,0.15f)][SerializeField] protected float _maxForce;
-
-    public float radius;
-
     //ejecuta y normaliza el tiempo de ejecucion del movimiento
     protected void Move()
     {
@@ -26,13 +18,13 @@ public class SteerinAgent :MonoBehaviour
     //le da la fuerza necesaria con la cual se movera
     protected void AddForce(Vector3 force)
     {
-        _velocity = Vector3.ClampMagnitude(_velocity + force, _maxSpeed);
+        _velocity = Vector3.ClampMagnitude(_velocity + force, FlyWeightPointer.agentFlyWeight.maxSpeed);
     }
 
     //busca al objetivo
     protected Vector3 Seek(Vector3 target)
     {
-        return CalculateSteering((target - transform.position).normalized * _maxSpeed);
+        return CalculateSteering((target - transform.position).normalized * FlyWeightPointer.agentFlyWeight.maxSpeed);
     }
 
     protected Vector3 Seek(Vector3 target, float speed)
@@ -44,14 +36,14 @@ public class SteerinAgent :MonoBehaviour
     protected Vector3 Arrive(Vector3 target)
     {
         float distance = Vector3.Distance(target, transform.position);
-        if (distance > radius)return Seek(target);
-            return Seek(target, _maxSpeed * (distance/radius));
+        if (distance > FlyWeightPointer.agentFlyWeight.radius) return Seek(target);
+            return Seek(target, FlyWeightPointer.agentFlyWeight.maxSpeed * (distance/FlyWeightPointer.agentFlyWeight.radius));
     }
 
     //fija al objetivo
     Vector3 CalculateSteering(Vector3 desired)
     {
-        return Vector3.ClampMagnitude(desired - _velocity, _maxForce);
+        return Vector3.ClampMagnitude(desired - _velocity, FlyWeightPointer.agentFlyWeight.maxForce);
     }
 
     //persigue y calcula la proxima pocision del objetivo
