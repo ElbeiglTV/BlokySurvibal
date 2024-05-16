@@ -15,8 +15,7 @@ public class PursuitAgent : SteerinAgent
     private float _currentSpeed;
     private float _currentForce;
     
-    [SerializeField] private float _maxDistance;
-    [SerializeField] private float _visionDistance;
+   
 
     private void Update()
     {
@@ -26,7 +25,7 @@ public class PursuitAgent : SteerinAgent
     private void CheckDistanceAndMove()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer > _maxDistance && distanceToPlayer < _visionDistance)
+        if (distanceToPlayer > FlyWeightPointer.agentFlyWeight.maxDistance && distanceToPlayer < FlyWeightPointer.agentFlyWeight.visionDistance)
         {
             //Añade fuerza necesaria para perseguir al objetivo marcado
             AddForce(Seek(player.position));
@@ -35,11 +34,11 @@ public class PursuitAgent : SteerinAgent
             anim.SetBool("run",true);
             anim.SetBool("attack", false);
         }
-        else if (distanceToPlayer <= _maxDistance)
+        else if (distanceToPlayer <= FlyWeightPointer.agentFlyWeight.maxDistance)
         {
             anim.SetBool("attack", true);
         }
-         else if (distanceToPlayer >= _maxDistance && Vector3.Distance(spawner.position, transform.position) > 1f)
+         else if (distanceToPlayer >= FlyWeightPointer.agentFlyWeight.maxDistance && Vector3.Distance(spawner.position, transform.position) > 1f)
         {
             AddForce(Arrive(spawner.position));
             //ejecuta el movimiento
@@ -62,12 +61,12 @@ public class PursuitAgent : SteerinAgent
     {
         //gizmo utilizado para visualizar la maxima distancia
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(player.transform.position, _maxDistance);
+        Gizmos.DrawWireSphere(player.transform.position, FlyWeightPointer.agentFlyWeight.maxDistance);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(player.transform.position, _visionDistance);
+        Gizmos.DrawWireSphere(player.transform.position, FlyWeightPointer.agentFlyWeight.visionDistance);
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(spawner.transform.position, radius);
+        Gizmos.DrawWireSphere(spawner.transform.position, FlyWeightPointer.agentFlyWeight.radius);
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, _velocity);
 
