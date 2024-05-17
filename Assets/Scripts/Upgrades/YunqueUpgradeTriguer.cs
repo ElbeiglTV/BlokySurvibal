@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class YunqueUpgradeTriguer : MonoBehaviour
@@ -8,16 +6,13 @@ public class YunqueUpgradeTriguer : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            other.GetComponent<PlayerController>()._inputCheck = 0;
-            UpgradeCamvas.SetActive(true);
-        }
+            if (other.GetComponent<UserModel>().inputCheck == 0)
+                UpgradeCamvas.SetActive(true);
+
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
             UpgradeCamvas.SetActive(false);
-        }
     }
 }

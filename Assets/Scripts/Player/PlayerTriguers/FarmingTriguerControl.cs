@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class FarmingTriguerControl : MonoBehaviour
 {
-    public PlayerController controller;
+    public UserModel model;
     public Transform rotateTarget;// se movera hacia el obj que estemos rompiendo;
     public Animator myAnimator;
     public Transform bow;
@@ -16,22 +16,18 @@ public class FarmingTriguerControl : MonoBehaviour
     public bool Enemy;
     public bool Rock;
 
-    IreColectable colectable;
+    IreColectable _colectable;
 
-    private void Start()
-    {
-       
-    }
     private void Update()
     {
-        if (colectable != null)
+        if (_colectable != null)
         {
-            if (!colectable.ActiveSelf())
+            if (!_colectable.ActiveSelf())
             {
                 myAnimator.SetBool("Talando", false);
                 myAnimator.SetBool("Shoot", false);
-                colectable.TogleSelect(false);
-                colectable = null;
+                _colectable.TogleSelect(false);
+                _colectable = null;
             }
         }
     }
@@ -41,11 +37,11 @@ public class FarmingTriguerControl : MonoBehaviour
     {
         if (other.CompareTag("Tree")&& Tree) // si el colider tiene la tag arbol tonces activo anim talar
         {
-            if (controller.GetInput().magnitude == 0)
+            if (model.GetInput().magnitude == 0)
             {
-                colectable = other.GetComponent<IreColectable>();
+                _colectable = other.GetComponent<IreColectable>();
                 myAnimator.SetBool("Talando", true);
-                colectable.TogleSelect(true);
+                _colectable.TogleSelect(true);
                 rotateTarget.position = new Vector3(other.transform.position.x, rotateTarget.position.y, other.transform.position.z);
             }
             else
@@ -56,11 +52,11 @@ public class FarmingTriguerControl : MonoBehaviour
 
         if (other.CompareTag("Enemy")&& Enemy) // si el colider tiene la tag Enemy tonces activo anim shoot
         {
-            if (controller.GetInput().magnitude == 0)
+            if (model.GetInput().magnitude == 0)
             {
-                colectable = other.GetComponent<IreColectable>();
+                _colectable = other.GetComponent<IreColectable>();
                 myAnimator.SetBool("Shoot", true);
-                colectable.TogleSelect(true);
+                _colectable.TogleSelect(true);
                 rotateTarget.position = new Vector3(other.transform.position.x, rotateTarget.position.y, other.transform.position.z);
             }
             else
@@ -73,20 +69,20 @@ public class FarmingTriguerControl : MonoBehaviour
     {
         if (other.CompareTag("Tree")&& Tree) // si el colider tiene la tag Tree tonces activo anim talar
         {
-            if (other.GetComponent<IreColectable>() == colectable)
+            if (other.GetComponent<IreColectable>() == _colectable)
             {
-                colectable.TogleSelect(false);
-                colectable = null;
+                _colectable.TogleSelect(false);
+                _colectable = null;
             }
             myAnimator.SetBool("Talando", false);
         }
 
         if (other.CompareTag("Enemy")&&Enemy) // si el colider tiene la tag Enemy tonces activo anim shoot
         {
-            if (other.GetComponent<IreColectable>() == colectable)
+            if (other.GetComponent<IreColectable>() == _colectable)
             {
-                colectable.TogleSelect(false);
-                colectable = null;
+                _colectable.TogleSelect(false);
+                _colectable = null;
             }
             myAnimator.SetBool("Shoot", false);
         }
@@ -95,15 +91,15 @@ public class FarmingTriguerControl : MonoBehaviour
 
     public void Colect()
     {
-        colectable?.Colect(1);
+        _colectable?.Colect(1);
     }
 
     public void Shoot()
     {
-        if (colectable != null)
+        if (_colectable != null)
         {
             Arrow arrow = ArrowPool.Instance.Get();
-            arrow.target = colectable.GetObject().transform;
+            arrow.target = _colectable.GetObject().transform;
             arrow.transform.position = bow.position;
             arrow.gameObject.SetActive(true);
         }

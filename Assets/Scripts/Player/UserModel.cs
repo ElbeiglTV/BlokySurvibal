@@ -2,13 +2,13 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(CharacterController)), SelectionBase]
-public class PlayerController : MonoBehaviour
+public class UserModel : MonoBehaviour
 {
-    [SerializeField] Controller controller;
-    public float _inputCheck;
-    Vector3 _input;
     CharacterController _characterController;
-    public Animator myAnimator;
+    [SerializeField] Controller _controller;
+
+    public float inputCheck;
+    public Animator view;
     public MoveSystem moveSystem;
     // Start is called before the first frame update
     void Start()
@@ -21,31 +21,24 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         InputUpdater();
-        moveSystem.Update(_input);
-        if (_inputCheck != 0)
+        moveSystem.Update(_controller.GetMovementInput());
+        if (inputCheck != 0)
         {
-            myAnimator.SetBool("Move", true);
-            myAnimator.SetBool("Talando", false);
-            myAnimator.SetBool("Shoot", false);
+            view.SetBool("Move", true);
+            view.SetBool("Talando", false);
+            view.SetBool("Shoot", false);
         }
         else
         {
-            myAnimator.SetBool("Move", false);
+            view.SetBool("Move", false);
         }
     }
-
-
     private void InputUpdater()
     {
-        _inputCheck = controller.GetMovementInput().normalized.magnitude;
-        _input = controller.GetMovementInput();
+        inputCheck = _controller.GetMovementInput().normalized.magnitude; 
     }
     public Vector3 GetInput()
     {
-        return _input;
+        return _controller.GetMovementInput();
     }
-
-
-
-
 }
