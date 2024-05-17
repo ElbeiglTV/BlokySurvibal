@@ -6,6 +6,7 @@ public class AnimationEventResource : MonoBehaviour
 {
    
     public FarmingTriguerControl control;
+    public FarmingTriguerControl atackControll;
    public void Collect()
     {
         control.Colect();
@@ -13,7 +14,7 @@ public class AnimationEventResource : MonoBehaviour
 
     public void AtackEvent()
     {
-        control.Shoot();
+        atackControll.Shoot();
 
     } 
 }

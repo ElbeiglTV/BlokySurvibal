@@ -11,9 +11,10 @@ public class FarmingTriguerControl : MonoBehaviour
     public PlayerController controller;
     public Transform rotateTarget;// se movera hacia el obj que estemos rompiendo;
     public Animator myAnimator;
-
-    public GameObject bala;
-    public Transform spawner;
+    public Transform bow;
+    public bool Tree;
+    public bool Enemy;
+    public bool Rock;
 
     IreColectable colectable;
 
@@ -38,7 +39,7 @@ public class FarmingTriguerControl : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Tree")) // si el colider tiene la tag arbol tonces activo anim talar
+        if (other.CompareTag("Tree")&& Tree) // si el colider tiene la tag arbol tonces activo anim talar
         {
             if (controller.GetInput().magnitude == 0)
             {
@@ -47,9 +48,13 @@ public class FarmingTriguerControl : MonoBehaviour
                 colectable.TogleSelect(true);
                 rotateTarget.position = new Vector3(other.transform.position.x, rotateTarget.position.y, other.transform.position.z);
             }
+            else
+            {
+                myAnimator.SetBool("Talando", false);
+            }
         }
 
-        if (other.CompareTag("Enemy")) // si el colider tiene la tag Enemy tonces activo anim shoot
+        if (other.CompareTag("Enemy")&& Enemy) // si el colider tiene la tag Enemy tonces activo anim shoot
         {
             if (controller.GetInput().magnitude == 0)
             {
@@ -58,11 +63,15 @@ public class FarmingTriguerControl : MonoBehaviour
                 colectable.TogleSelect(true);
                 rotateTarget.position = new Vector3(other.transform.position.x, rotateTarget.position.y, other.transform.position.z);
             }
+            else
+            {
+                myAnimator.SetBool("Shoot", false);
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Tree")) // si el colider tiene la tag Tree tonces activo anim talar
+        if (other.CompareTag("Tree")&& Tree) // si el colider tiene la tag Tree tonces activo anim talar
         {
             if (other.GetComponent<IreColectable>() == colectable)
             {
@@ -72,7 +81,7 @@ public class FarmingTriguerControl : MonoBehaviour
             myAnimator.SetBool("Talando", false);
         }
 
-        if (other.CompareTag("Enemy")) // si el colider tiene la tag Enemy tonces activo anim shoot
+        if (other.CompareTag("Enemy")&&Enemy) // si el colider tiene la tag Enemy tonces activo anim shoot
         {
             if (other.GetComponent<IreColectable>() == colectable)
             {
@@ -93,10 +102,10 @@ public class FarmingTriguerControl : MonoBehaviour
     {
         if (colectable != null)
         {
-            GameObject bullet = Instantiate(bala);
-            bullet.transform.position = spawner.position;
-            bullet.transform.right = spawner.right;
-            bullet.GetComponent<Bullet>().target = colectable.GetObject().transform;
+            Arrow arrow = ArrowPool.Instance.Get();
+            arrow.target = colectable.GetObject().transform;
+            arrow.transform.position = bow.position;
+            arrow.gameObject.SetActive(true);
         }
 
     }
