@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class FlyWeightPointer 
 {
-    public static AgentFlyWeight agentFlyWeight = new AgentFlyWeight()
+    public static readonly AgentFlyWeight agentFlyWeight = new AgentFlyWeight()
     {
        maxForce = 0.060f,
        maxSpeed = 3,    
