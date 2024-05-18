@@ -13,8 +13,8 @@ public class MenuUpgradeButons : MonoBehaviour
         if (menuUpgradeCost.StaminaUpgradesCost.Count >= Statics.StaminaUpgradeLevel) return;
         if (Statics.gold >= menuUpgradeCost.StaminaUpgradesCost[Statics.StaminaUpgradeLevel])
         {
-            Statics.currency -= 10;
-            Statics.MaxStamina += 5;
+            Statics.currency -= menuUpgradeCost.StaminaUpgradesCost[Statics.StaminaUpgradeLevel];
+            Statics.MaxStamina += 5*Statics.StaminaUpgradeLevel;
         }
         Statics.StaminaUpgradeLevel++;
         SaveSystem.instance.Save();
@@ -24,8 +24,8 @@ public class MenuUpgradeButons : MonoBehaviour
         if (menuUpgradeCost.HealthUpgradesCost.Count >= Statics.HealthUpgradeLevel) return;
         if (Statics.gold >= menuUpgradeCost.HealthUpgradesCost[Statics.HealthUpgradeLevel])
         {
-            Statics.currency -= 10;
-            Statics.playerMaxHealth += 10;
+            Statics.currency -= menuUpgradeCost.HealthUpgradesCost[Statics.HealthUpgradeLevel];
+            Statics.playerMaxHealth += 10*Statics.HealthUpgradeLevel;
         }
         Statics.HealthUpgradeLevel++;
         SaveSystem.instance.Save();
@@ -35,8 +35,8 @@ public class MenuUpgradeButons : MonoBehaviour
         if (menuUpgradeCost.DamageUpgradesCost.Count >= Statics.DamageUpgradeLevel) return;
         if (Statics.gold >= menuUpgradeCost.DamageUpgradesCost[Statics.DamageUpgradeLevel])
         {
-            Statics.currency -= 10;
-            Statics.playerBaseDamage += 10;
+            Statics.currency -= menuUpgradeCost.DamageUpgradesCost[Statics.DamageUpgradeLevel];
+            Statics.playerBaseDamage += 10* Statics.DamageUpgradeLevel/2;
         }
         Statics.DamageUpgradeLevel++;
         SaveSystem.instance.Save();
@@ -45,7 +45,7 @@ public class MenuUpgradeButons : MonoBehaviour
 [System.Serializable]
 public class MenuUpgradeCost
 {
-    public List<float> StaminaUpgradesCost = new List<float>();
-    public List<float> HealthUpgradesCost = new List<float>();
-    public List<float> DamageUpgradesCost = new List<float>();
+    public List<int> StaminaUpgradesCost = new List<int>();
+    public List<int> HealthUpgradesCost = new List<int>();
+    public List<int> DamageUpgradesCost = new List<int>();
 }

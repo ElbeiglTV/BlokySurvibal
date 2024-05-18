@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"f5f1fe33-8c0d-4ca2-88d7-cd52a7081349\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"1ee53bed-8e4e-47ae-bf5f-6faad568ad54\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"Menu Upgrade Cost\",\r\n      \"type\":
     \"json\",\r\n      \"schemaId\": \"upgrade-costs-template\",\r\n      \"value\":
     {\r\n        \"StaminaUpgradesCost\": [\r\n          10,\r\n          20\r\n       
     ],\r\n        \"HealthUpgradesCost\": [\r\n          10,\r\n          20\r\n       
     ],\r\n        \"DamageUpgradesCost\": [\r\n          10,\r\n          20\r\n       
     ]\r\n      }\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"f5f1fe33-8c0d-4ca2-88d7-cd52a7081349\"\r\n   
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"1ee53bed-8e4e-47ae-bf5f-6faad568ad54\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"Menu Upgrade Cost\",\r\n      \"type\":
     \"json\",\r\n      \"schemaId\": \"upgrade-costs-template\",\r\n      \"value\":
     {\r\n        \"StaminaUpgradesCost\": [\r\n          10,\r\n          20\r\n       

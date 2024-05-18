@@ -1,46 +1,58 @@
-/*using UnityEngine;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
 using Unity.Services.RemoteConfig;
+using UnityEngine;
 
 public class RemoteConfigManager : MonoBehaviour
 {
-    public struct userAttributes { }
-    public struct appAttributes { }
-    private void Awake()
+    [SerializeField]MenuUpgradeButons menuUpgradeButons;
+    // Estructuras para los usuarios y las reglas
+    struct userAttributes { }
+    struct appAttributes { }
+
+    async void Start()
     {
-        RemoteConfigService.Instance.FetchCompleted += ApplyRemoteConfig;
-         RemoteConfigService.Instance.FetchConfigs<userAttributes,appAttributes>(new userAttributes(),new appAttributes());
+        try
+        {
+            // Inicializa los servicios de Unity
+            await UnityServices.InitializeAsync();
+
+            // Inicia sesión de manera anónima
+            if (!AuthenticationService.Instance.IsSignedIn)
+            {
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                Debug.Log("Signed in anonymously.");
+            }
+
+            // Registra el evento para cuando se complete la obtención de la configuración
+            RemoteConfigService.Instance.FetchCompleted += ApplyRemoteSettings;
+
+            // Obtén las configuraciones remotas
+            RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new appAttributes());
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error during initialization: {e.Message}");
+        }
     }
 
-    private void ApplyRemoteConfig(ConfigResponse response)
+    // Método para aplicar los ajustes remotos una vez obtenidos
+    void ApplyRemoteSettings(ConfigResponse configResponse)
     {
-        if (response.status == ConfigRequestStatus.Success)
+        // Verifica el origen de los datos
+        if (configResponse.requestOrigin == ConfigOrigin.Default ||
+            configResponse.requestOrigin == ConfigOrigin.Cached ||
+            configResponse.requestOrigin == ConfigOrigin.Remote)
         {
-            List<object> staminaUpgradesCostList = Unity.RemoteConfig.ConfigManager.appConfig.GetList("StaminaUpgradesCost");
-            List<object> healthUpgradesCostList = Unity.RemoteConfig.ConfigManager.appConfig.GetList("HealthUpgradesCost");
-            List<object> damageUpgradesCostList = Unity.RemoteConfig.ConfigManager.appConfig.GetList("DamageUpgradesCost");
+            // Obtén el JSON de Remote Config
+            string jsonArray = RemoteConfigService.Instance.appConfig.GetJson("Menu Upgrade Cost");
+            menuUpgradeButons.menuUpgradeCost = JsonConvert.DeserializeObject<MenuUpgradeCost>(jsonArray);
 
-            List<float> staminaUpgradesCost = ConvertList<float>(staminaUpgradesCostList);
-            List<float> healthUpgradesCost = ConvertList<float>(healthUpgradesCostList);
-            List<float> damageUpgradesCost = ConvertList<float>(damageUpgradesCostList);
-
-            Debug.Log("Stamina Upgrades Cost: " + string.Join(", ", staminaUpgradesCost));
-            Debug.Log("Health Upgrades Cost: " + string.Join(", ", healthUpgradesCost));
-            Debug.Log("Damage Upgrades Cost: " + string.Join(", ", damageUpgradesCost));
-        }
-        else
-        {
-            Debug.LogError("Error al obtener datos de Remote Config: " + response.error);
+            Debug.Log(jsonArray);
+            
         }
     }
-
-    private List<T> ConvertList<T>(List<object> list)
-    {
-        List<T> convertedList = new List<T>();
-        foreach (var item in list)
-        {
-            convertedList.Add((T)item);
-        }
-        return convertedList;
-    }
-}*/
+}
