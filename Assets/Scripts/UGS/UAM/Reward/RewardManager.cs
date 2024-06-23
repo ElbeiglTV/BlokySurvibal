@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class RewardManager : MonoBehaviour
 {
     public Button staminaRewardButton;
+    public Button BrickRewardButton;
+    public Button GoldRewardButton;
 
 
     private void Update()
@@ -27,7 +29,7 @@ public class RewardManager : MonoBehaviour
 
 
 
-    public void CurrencyReward()
+    public void BrickReward()
     {
 
     }
