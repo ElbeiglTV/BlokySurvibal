@@ -94,6 +94,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
             SkipedRewardAction?.Invoke();
         }
     }
+    [ContextMenu("ShowAdd")]
     public void ShowAdd()
     {
         Advertisement.Load(selectedAddId, this);
