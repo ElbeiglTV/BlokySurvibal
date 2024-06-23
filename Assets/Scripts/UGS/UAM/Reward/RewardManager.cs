@@ -37,6 +37,7 @@ public class RewardManager : MonoBehaviour
     {
         AdManager.instance.RewardAction = StaminaReward;
         AdManager.instance.ShowAdd();
+
     }
     public void StaminaReward()
     {
@@ -44,7 +45,11 @@ public class RewardManager : MonoBehaviour
         staminaRewardButton.interactable = false;
         AdManager.instance.RewardAction = null;
         DateTime dateTime = DateTime.Now;
+#if UNITY_ANDROID
+        NotificationManager.instance.CrearNotificacion(dateTime.AddSeconds(10));
+#endif
         PlayerPrefs.SetString("StaminaRewardTime", dateTime.ToString());
+
 
     }
 
