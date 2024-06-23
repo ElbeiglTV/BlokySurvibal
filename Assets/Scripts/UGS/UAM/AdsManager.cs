@@ -20,6 +20,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
             InitializeAdd();
         }
         else
@@ -32,7 +33,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 #if UNITY_ANDROID
         selectedId = androidGameId;
         selectedAddId = androidAddId;
-#elif UNITY_EDITOR && UNITY_ANDROID || UNITY_EDITOR || UNITY_ANDROID
+#elif UNITY_EDITOR
         selectedId = androidGameId;
         selectedAddId = androidAddId;
 #endif
@@ -57,27 +58,39 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 
     public void OnUnityAdsAdLoaded(string placementId)
     {
-        Debug.Log("Ad Loaded");
+        Advertisement.Show(placementId, this);
     }
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        Debug.LogError($"Unity Ads Failed to Load: {error.ToString()} - {message}");
+        throw new System.NotImplementedException();
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
+<<<<<<< HEAD
        Debug.LogError($"Unity Ads Show Failure: {error.ToString()} - {message}");
+=======
+        throw new System.NotImplementedException();
+>>>>>>> parent of 445d1b2 (Merge branch 'main' of https://github.com/ElbeiglTV/BlokySurvibal)
     }
 
     public void OnUnityAdsShowStart(string placementId)
     {
+<<<<<<< HEAD
         Debug.Log("Ad Started");
+=======
+        throw new System.NotImplementedException();
+>>>>>>> parent of 445d1b2 (Merge branch 'main' of https://github.com/ElbeiglTV/BlokySurvibal)
     }
 
     public void OnUnityAdsShowClick(string placementId)
     {
+<<<<<<< HEAD
         Debug.Log("Ad Clicked");
+=======
+        throw new System.NotImplementedException();
+>>>>>>> parent of 445d1b2 (Merge branch 'main' of https://github.com/ElbeiglTV/BlokySurvibal)
     }
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
