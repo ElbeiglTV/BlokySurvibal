@@ -12,8 +12,13 @@ public class PursuitAgent : SteerinAgent
 
     public Animator anim;
 
-    private float _currentSpeed;
-    private float _currentForce;
+    public LayerMask obstacleMask;
+    public float avoidDistance = 5f;
+    public float avoidForce = 10f;
+
+
+    /*private float _currentSpeed;
+    private float _currentForce;*/
     
    
 
@@ -29,6 +34,7 @@ public class PursuitAgent : SteerinAgent
         {
             //Añade fuerza necesaria para perseguir al objetivo marcado
             AddForce(Seek(player.position));
+            AvoidObstacles();
             //ejecuta el movimiento
             Move();
             anim.SetBool("run",true);
@@ -41,6 +47,7 @@ public class PursuitAgent : SteerinAgent
          else if (distanceToPlayer >= FlyWeightPointer.agentFlyWeight.maxDistance && Vector3.Distance(spawner.position, transform.position) > 1f)
         {
             AddForce(Arrive(spawner.position));
+            AvoidObstacles();
             //ejecuta el movimiento
             Move();
             anim.SetBool("run", true);
@@ -52,8 +59,17 @@ public class PursuitAgent : SteerinAgent
             anim.SetBool("attack", false);
         }
 
-        
+    }
 
+    private void AvoidObstacles()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, avoidDistance, obstacleMask))
+        {
+            Debug.Log("Avoiding obstacle!");
+            Vector3 avoidDirection = Vector3.Reflect(transform.forward, hit.normal);
+            AddForce(avoidDirection * avoidForce);
+        }
     }
 
 
@@ -65,12 +81,15 @@ public class PursuitAgent : SteerinAgent
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(player.transform.position, FlyWeightPointer.agentFlyWeight.visionDistance);
+
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(spawner.transform.position, FlyWeightPointer.agentFlyWeight.radius);
+
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, _velocity);
 
-        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, transform.forward * avoidDistance);
 
     }
 
