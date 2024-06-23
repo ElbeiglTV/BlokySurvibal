@@ -6452,7 +6452,7 @@
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
     "m_SupportsLODCrossFade": false,
-    "m_CustomEditorGUI": "HideElements",
+    "m_CustomEditorGUI": "",
     "m_SupportVFX": false
 }
 
