@@ -20,7 +20,6 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
             InitializeAdd();
         }
         else
@@ -33,7 +32,7 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 #if UNITY_ANDROID
         selectedId = androidGameId;
         selectedAddId = androidAddId;
-#elif UNITY_EDITOR
+#elif UNITY_EDITOR && UNITY_ANDROID || UNITY_EDITOR || UNITY_ANDROID
         selectedId = androidGameId;
         selectedAddId = androidAddId;
 #endif
@@ -58,27 +57,27 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 
     public void OnUnityAdsAdLoaded(string placementId)
     {
-        Advertisement.Show(placementId, this);
+        Debug.Log("Ad Loaded");
     }
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        throw new System.NotImplementedException();
+        Debug.LogError($"Unity Ads Failed to Load: {error.ToString()} - {message}");
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
-        throw new System.NotImplementedException();
+       
     }
 
     public void OnUnityAdsShowStart(string placementId)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnUnityAdsShowClick(string placementId)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
