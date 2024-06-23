@@ -33,41 +33,18 @@ public class RewardManager : MonoBehaviour
     {
 
     }
-
-
-
-
     public void StaminaButton()
     {
         AdManager.instance.RewardAction = StaminaReward;
-        AdManager.instance.SkipedRewardAction = SkipedStaminaReward;
         AdManager.instance.ShowAdd();
-
     }
     public void StaminaReward()
-    {
-        Statics.Stamina += 2;
-        staminaRewardButton.interactable = false;
-        AdManager.instance.RewardAction = null;
-        DateTime dateTime = DateTime.Now;
-#if UNITY_ANDROID
-        NotificationManager.instance.CrearNotificacion(dateTime.AddSeconds(10));
-#endif
-        PlayerPrefs.SetString("StaminaRewardTime", dateTime.ToString());
-
-
-    }
-    public void SkipedStaminaReward()
     {
         Statics.Stamina += 1;
         staminaRewardButton.interactable = false;
         AdManager.instance.RewardAction = null;
         DateTime dateTime = DateTime.Now;
-#if UNITY_ANDROID
-        NotificationManager.instance.CrearNotificacion(dateTime.AddSeconds(10));
-#endif
         PlayerPrefs.SetString("StaminaRewardTime", dateTime.ToString());
-
 
     }
 
