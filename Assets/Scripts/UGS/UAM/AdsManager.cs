@@ -63,22 +63,21 @@ public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        throw new System.NotImplementedException();
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
-        throw new System.NotImplementedException();
+       Debug.LogError($"Unity Ads Show Failure: {error.ToString()} - {message}");
     }
 
     public void OnUnityAdsShowStart(string placementId)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Ad Started");
     }
 
     public void OnUnityAdsShowClick(string placementId)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Ad Clicked");
     }
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
