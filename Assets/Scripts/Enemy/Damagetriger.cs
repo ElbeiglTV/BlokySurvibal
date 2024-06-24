@@ -9,7 +9,12 @@ public class Damagetriger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             var lifeSystem = other.GetComponent<IDamageable>();
+            if (lifeSystem != null) 
+            { 
+            
             lifeSystem.Damage(20);
+            }
+
         }
     }
 }

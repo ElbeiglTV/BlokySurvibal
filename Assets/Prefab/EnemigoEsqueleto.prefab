@@ -124,7 +124,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1438588462601713864}
   - component: {fileID: 4233493939704582177}
-  - component: {fileID: 5056085132298661206}
   m_Layer: 0
   m_Name: DamageTrigger
   m_TagString: Untagged
@@ -168,18 +167,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.031693347, y: 0.030684268, z: 0.029698504}
   m_Center: {x: -0.0042722635, y: -0.032861035, z: -0.032974917}
---- !u!114 &5056085132298661206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144504651675006912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf0ed08fce388cb49963e0b59d8ebf83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &759944845008897818
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,14 +331,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df7a1331c403d84aa535d5b26651253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 3.56
-  _maxForce: 0.0628
-  radius: 1.23
   player: {fileID: 0}
   spawner: {fileID: 0}
   anim: {fileID: 5759377240263319377}
-  _maxDistance: 1.64
-  _visionDistance: 5.98
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  avoidDistance: 5
+  avoidForce: 10
 --- !u!114 &3604501172947309026
 MonoBehaviour:
   m_ObjectHideFlags: 0
