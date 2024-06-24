@@ -11,13 +11,13 @@ public class AudioPlayer : MonoBehaviour
     {
         if (level == 0)
         {
-            //AudioRequester.Instance.StopSong();
-            AudioRequester.Instance.DelayPlay("Main Menu",0.1f,true);
+            AudioRequester.Instance.StopSong();
+            AudioRequester.Instance.DelayPlay("Menu Music",0.1f,true);
         }
         else
         {
             AudioRequester.Instance.StopSong();
-            AudioRequester.Instance.DelayPlay("Level", 0.1f, true);
+            AudioRequester.Instance.DelayPlay("Level music", 0.1f, true);
         }
     }
 }
