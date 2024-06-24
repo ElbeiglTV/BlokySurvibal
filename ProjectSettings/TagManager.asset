@@ -7,6 +7,7 @@ TagManager:
   - Folder
   - Tree
   - Enemy
+  - Water
   layers:
   - Default
   - TransparentFX
