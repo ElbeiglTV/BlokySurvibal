@@ -29,6 +29,13 @@ public static class Statics
 
     #endregion
 
+
+
+    public static void ResetBasicResources()
+    {
+        wood = 0;
+        stone = 0;
+    }
     public static void Reset()
     {
         wood = 0;
