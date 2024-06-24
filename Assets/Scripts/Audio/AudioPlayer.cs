@@ -11,7 +11,7 @@ public class AudioPlayer : MonoBehaviour
     {
         if (level == 0)
         {
-            AudioRequester.Instance.StopSong();
+            //AudioRequester.Instance.StopSong();
             AudioRequester.Instance.DelayPlay("Main Menu",0.1f,true);
         }
         else
