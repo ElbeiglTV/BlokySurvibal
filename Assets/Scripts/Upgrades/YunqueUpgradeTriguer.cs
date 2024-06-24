@@ -6,6 +6,7 @@ public class YunqueUpgradeTriguer : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
+            if(other.GetComponent<UserModel>() != null)
             if (other.GetComponent<UserModel>().inputCheck == 0)
                 UpgradeCamvas.SetActive(true);
 
