@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverCondition : MonoBehaviour
 {
@@ -20,6 +21,14 @@ public class GameOverCondition : MonoBehaviour
     }
     public void Win()
     {
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            PlayerPrefs.SetInt("Level1",1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level2", 1);
+        }
         Debug.Log("You Win");
         sceneLoader.LoadScene("WinScene");
     }
