@@ -23,6 +23,10 @@ public class NotificationManager : MonoBehaviour
         }
     
     }
+    private void Start()
+    {
+        StartCoroutine(PermisionRecuest());
+    }
 
 
 
@@ -50,5 +54,14 @@ public class NotificationManager : MonoBehaviour
         };
         AndroidNotificationCenter.SendNotification(androidNotification, channelId);
     }
+    IEnumerator PermisionRecuest()
+    {
+        var recuest = new PermissionRequest();
+        while(recuest.Status == PermissionStatus.RequestPending)
+        {
+            yield return null;
+        }
+    }
+
 #endif
 }
