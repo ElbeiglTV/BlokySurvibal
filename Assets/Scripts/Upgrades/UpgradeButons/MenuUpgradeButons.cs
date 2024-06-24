@@ -6,14 +6,21 @@ using System.IO;
 
 public class MenuUpgradeButons : MonoBehaviour
 {
+    private static MenuUpgradeButons _instance;
+    public static MenuUpgradeButons instance { get { return _instance; } private set { } }
+    private void Awake()
+    {
+        if (_instance == null) _instance = this;
+        else Destroy(gameObject);
+    }
     public MenuUpgradeCost menuUpgradeCost;
 
     public void UpgradeStamina()
     {
-        if (menuUpgradeCost.StaminaUpgradesCost.Count >= Statics.StaminaUpgradeLevel) return;
+        if (menuUpgradeCost.StaminaUpgradesCost.Count <= Statics.StaminaUpgradeLevel) return;
         if (Statics.gold >= menuUpgradeCost.StaminaUpgradesCost[Statics.StaminaUpgradeLevel])
         {
-            Statics.currency -= menuUpgradeCost.StaminaUpgradesCost[Statics.StaminaUpgradeLevel];
+            Statics.gold -= menuUpgradeCost.StaminaUpgradesCost[Statics.StaminaUpgradeLevel];
             Statics.MaxStamina += 5*Statics.StaminaUpgradeLevel;
         }
         Statics.StaminaUpgradeLevel++;
@@ -21,10 +28,10 @@ public class MenuUpgradeButons : MonoBehaviour
     }
     public void UpgradeHealth()
     {
-        if (menuUpgradeCost.HealthUpgradesCost.Count >= Statics.HealthUpgradeLevel) return;
+        if (menuUpgradeCost.HealthUpgradesCost.Count <= Statics.HealthUpgradeLevel) return;
         if (Statics.gold >= menuUpgradeCost.HealthUpgradesCost[Statics.HealthUpgradeLevel])
         {
-            Statics.currency -= menuUpgradeCost.HealthUpgradesCost[Statics.HealthUpgradeLevel];
+            Statics.gold -= menuUpgradeCost.HealthUpgradesCost[Statics.HealthUpgradeLevel];
             Statics.playerMaxHealth += 10*Statics.HealthUpgradeLevel;
         }
         Statics.HealthUpgradeLevel++;
@@ -32,10 +39,10 @@ public class MenuUpgradeButons : MonoBehaviour
     }
     public void UpgradeDamage()
     {
-        if (menuUpgradeCost.DamageUpgradesCost.Count >= Statics.DamageUpgradeLevel) return;
+        if (menuUpgradeCost.DamageUpgradesCost.Count <= Statics.DamageUpgradeLevel) return;
         if (Statics.gold >= menuUpgradeCost.DamageUpgradesCost[Statics.DamageUpgradeLevel])
         {
-            Statics.currency -= menuUpgradeCost.DamageUpgradesCost[Statics.DamageUpgradeLevel];
+            Statics.gold -= menuUpgradeCost.DamageUpgradesCost[Statics.DamageUpgradeLevel];
             Statics.playerBaseDamage += 10* Statics.DamageUpgradeLevel/2;
         }
         Statics.DamageUpgradeLevel++;

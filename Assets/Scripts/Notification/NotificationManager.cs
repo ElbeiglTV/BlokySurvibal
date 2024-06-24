@@ -23,14 +23,11 @@ public class NotificationManager : MonoBehaviour
         }
     
     }
+#if UNITY_ANDROID
     private void Start()
     {
         StartCoroutine(PermisionRecuest());
     }
-
-
-
-#if UNITY_ANDROID
     private const string channelId = "notificationChanel";
 
     public void CrearNotificacion(DateTime fecha)
