@@ -17,10 +17,12 @@ public class GameOverCondition : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("Game Over");
+        Statics.ResetBasicResources();
         sceneLoader.LoadScene("LoseScene");
     }
     public void Win()
     {
+
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
             PlayerPrefs.SetInt("Level1",1);
@@ -30,6 +32,7 @@ public class GameOverCondition : MonoBehaviour
             PlayerPrefs.SetInt("Level2", 1);
         }
         Debug.Log("You Win");
+        Statics.ResetBasicResources();
         sceneLoader.LoadScene("WinScene");
     }
     
