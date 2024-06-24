@@ -10,7 +10,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        if ((Statics.Stamina <= 2 && SceneManager.GetActiveScene().buildIndex == 0) || !Statics.FirstTime)
+        if ((Statics.Stamina <= 2 && SceneManager.GetActiveScene().buildIndex == 0))
         {
             Debug.Log("Not enough stamina");
             return;
@@ -35,7 +35,7 @@ public class SceneLoader : MonoBehaviour
         else
         {
             
-        SceneManager.LoadSceneAsync(sceneName);
+        LoadScene(sceneName);
         }
     }
     public void Reset()
