@@ -7,7 +7,7 @@ public class LocalizationManager : MonoBehaviour
 {
     public static LocalizationManager instance = default;
     public event Action OnChangeLanguage;
-    private SystemLanguage _language = default;
+    [SerializeField] private SystemLanguage _language = default;
     public SystemLanguage language
     {
         get => _language;
