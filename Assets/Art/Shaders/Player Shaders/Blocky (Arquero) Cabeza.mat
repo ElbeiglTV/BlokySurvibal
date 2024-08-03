@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Head_01
+  m_Name: Blocky (Arquero) Cabeza
   m_Shader: {fileID: -6465566751694194690, guid: a43ff553a4bbcf44288f077adcc135e5,
     type: 3}
   m_Parent: {fileID: 0}
