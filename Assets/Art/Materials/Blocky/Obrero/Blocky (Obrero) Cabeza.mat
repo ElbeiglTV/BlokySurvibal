@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blocky (Standard) Cabeza
+  m_Name: Blocky (Obrero) Cabeza
   m_Shader: {fileID: -6465566751694194690, guid: a43ff553a4bbcf44288f077adcc135e5,
     type: 3}
   m_Parent: {fileID: 0}
@@ -62,7 +62,11 @@ Material:
     - _Cull: 2
     - _DstBlend: 10
     - _Has_Transparency: 1
-    - _Intensity: 4.86
+    - _Inner_Fresnel_Power: 1.12
+    - _Inner_Intensity: 2.04
+    - _Inner_Noise_Scale: 76.2
+    - _Inner_Spread: 3.9
+    - _Intensity: 2.83
     - _Pattern_Edge_Width: 0.2
     - _Pattern_Scale: 1
     - _QueueControl: 0
@@ -70,15 +74,16 @@ Material:
     - _ReceiveShadows: 1
     - _SrcBlend: 1
     - _Surface: 1
-    - _Thickness: 7.17
+    - _Thickness: 5.78
     - _Triplanar_Blending: 1
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 1
     m_Colors:
-    - _Border_Color: {r: 1, g: 1, b: 1, a: 0}
-    - _Inner_Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Border_Color: {r: 4, g: 2.2851295, b: 0, a: 0}
+    - _Inner_Color: {r: 4, g: 1.4254713, b: 0, a: 1}
+    - _Inner_Noise_Movement: {r: 0.02, g: -0.03, b: 0, a: 0}
     - _Pattern_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Pattern_Tiling: {r: 39, g: 39, b: 0, a: 0}
   m_BuildTextureStacks: []

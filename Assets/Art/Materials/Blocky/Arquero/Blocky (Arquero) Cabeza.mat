@@ -62,6 +62,10 @@ Material:
     - _Cull: 2
     - _DstBlend: 10
     - _Has_Transparency: 1
+    - _Inner_Fresnel_Power: 1.39
+    - _Inner_Intensity: 1
+    - _Inner_Noise_Scale: 78.69
+    - _Inner_Spread: 5.06
     - _Intensity: 4.86
     - _Pattern_Edge_Width: 0.2
     - _Pattern_Scale: 1
@@ -77,8 +81,9 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 1
     m_Colors:
-    - _Border_Color: {r: 1, g: 1, b: 1, a: 0}
-    - _Inner_Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Border_Color: {r: 0, g: 0.46226418, b: 0, a: 0}
+    - _Inner_Color: {r: 0.13913631, g: 4, b: 0, a: 1}
+    - _Inner_Noise_Movement: {r: 0.04, g: -0.05, b: 0, a: 0}
     - _Pattern_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Pattern_Tiling: {r: 39, g: 39, b: 0, a: 0}
   m_BuildTextureStacks: []
