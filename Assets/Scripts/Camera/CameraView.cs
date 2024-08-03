@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraView : MonoBehaviour
 {
     public Transform target;
     public LayerMask terrainMask;
