@@ -1,18 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public List<GameObject> tutorialGameObjectsDeactivate;
     public List<GameObject> tutorialGameObjectsActivate;
+    public GameObject warning;
 
     public void LoadScene(string sceneName)
     {
         if ((Statics.Stamina <= 2 && SceneManager.GetActiveScene().buildIndex == 0))
         {
             Debug.Log("Not enough stamina");
+            warning.SetActive(true);
             return;
         }
         SceneManager.LoadSceneAsync(sceneName);
@@ -26,16 +26,11 @@ public class SceneLoader : MonoBehaviour
             {
                 go.SetActive(true);
             }
-            foreach (GameObject go in tutorialGameObjectsDeactivate)
-            {
-                go.SetActive(false);
-            }
             SaveSystem.instance.Save();
         }
         else
         {
-            
-        LoadScene(sceneName);
+            LoadScene(sceneName);
         }
     }
     public void Reset()

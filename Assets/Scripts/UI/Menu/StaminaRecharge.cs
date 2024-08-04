@@ -9,4 +9,14 @@ public class StaminaRecharge : MonoBehaviour
         if (Statics.Stamina >= Statics.MaxStamina) return;
         else Statics.Stamina = Statics.MaxStamina;
     }
+
+    public void BrickCharge()
+    {
+        Statics.currency += 10;
+    }
+
+    public void GoldCharge()
+    {
+        Statics.currency += 100;
+    }
 }
