@@ -6,7 +6,7 @@ public class GachaSystem : MonoBehaviour
     public List<GachaBaner> gachaBaner; // Lista de ítems gacha configurables desde el inspector
 
     // Método para obtener un ítem al azar basado en la tasa de obtención
-    public GachaItem GetRandomItem(GachaBaner baner)
+    public void GetRandomItem(GachaBaner baner)
     {
         float totalDropRate = 0f;
 
@@ -29,14 +29,21 @@ public class GachaSystem : MonoBehaviour
             cumulativeDropRate += item.dropWeigth;
             if (randomValue < cumulativeDropRate)
             {
-                return item;
+                if (Statics.GachaInventory.ContainsKey(item.itemID))
+                {
+                    Statics.GachaInventory.Set(item.itemID, Statics.GachaInventory.Get(item.itemID) + 1);
+                }
+                else
+                {
+                    Statics.GachaInventory.Add(item.itemID, 1);
+                }
             }
         }
 
 
-        return null; // Esto no debería ocurrir si las tasas están bien configuradas
+         // Esto no debería ocurrir si las tasas están bien configuradas
     }
-    public GachaItem GetRandomItem(int banerInt)
+    public void GetRandomItem(int banerInt)
     {
         float totalDropRate = 0f;
 
@@ -59,12 +66,17 @@ public class GachaSystem : MonoBehaviour
             cumulativeDropRate += item.dropWeigth;
             if (randomValue < cumulativeDropRate)
             {
-                return item;
+                if (Statics.GachaInventory.ContainsKey(item.itemID))
+                {
+                    Statics.GachaInventory.Set(item.itemID, Statics.GachaInventory.Get(item.itemID) + 1);
+                }
+                else
+                {
+                    Statics.GachaInventory.Add(item.itemID, 1);
+                }
             }
         }
 
-
-        return null; // Esto no debería ocurrir si las tasas están bien configuradas
     }
 
 

@@ -18,6 +18,8 @@ public class StaticsData
             damageUpgradeLevel = Statics.DamageUpgradeLevel;
             playerMaxHealth = Statics.playerMaxHealth;
             playerBaseDamage = Statics.playerBaseDamage;
+            GachaInventory = Statics.GachaInventory;
+            
             
         }
         else
@@ -34,6 +36,7 @@ public class StaticsData
             damageUpgradeLevel = 0;
             playerMaxHealth = 100;
             playerBaseDamage = 0;
+            GachaInventory = new SerialisedDictionary<int, int>();
 
         }
     }
@@ -51,6 +54,7 @@ public class StaticsData
         Statics.DamageUpgradeLevel = damageUpgradeLevel;
         Statics.playerMaxHealth = playerMaxHealth;
         Statics.playerBaseDamage = playerBaseDamage;
+        Statics.GachaInventory = GachaInventory;
 
     }
 
@@ -67,5 +71,6 @@ public class StaticsData
     public int damageUpgradeLevel = 0;
     public float playerMaxHealth = 100;
     public int playerBaseDamage = 0;
+    public SerialisedDictionary<int, int> GachaInventory = new SerialisedDictionary<int, int>();
 
 }

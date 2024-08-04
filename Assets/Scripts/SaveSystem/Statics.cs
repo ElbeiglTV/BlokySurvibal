@@ -11,6 +11,7 @@ public static class Statics
     public static int currency = default;
     public static int Stamina = default;
     public static int MaxStamina = 20;
+    public static SerialisedDictionary<int,int> GachaInventory = new SerialisedDictionary<int, int>();
 
     #region UserVars
     public static bool FirstTime = true;
@@ -49,6 +50,7 @@ public static class Statics
         DamageUpgradeLevel = 0;
         playerMaxHealth = 100;
         playerBaseDamage = 0;
+        GachaInventory.Clear();
 
     }
 }
