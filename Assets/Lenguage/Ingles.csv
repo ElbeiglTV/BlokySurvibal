@@ -36,3 +36,9 @@ T_Ad_Info ¬ Skipping the Ad will give half of the reward °
 B_Equipar ¬ Equip °
 T_AttackStat ¬ 25% Bonus Attack Speed °
 T_MiningStat ¬ 25% Bonus Mining Speed °
+T_Pausa ¬ Pause °
+T_Vida ¬ Your life °
+T_Recursos ¬ Resources (to upgrade the house) °
+T_Oro ¬ Gold (to buy upgrades in the main menu) °
+T_Ladrillos ¬ Bricks (for gacha pulls) °
+T_Joystick ¬ Joystick (movement) °
