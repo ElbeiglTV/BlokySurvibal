@@ -12,21 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Baner
   m_EditorClassIdentifier: Assembly-CSharp::GachaBaner
-  banerName: Character
-  items:
-  - Item: {fileID: 0}
-    dropWeigth: 3
-    itemID: 0
-    itemName: Juan
-    rarity: 1
-    icon: {fileID: 0}
-    Porcentage: 75
-  - Item: {fileID: 0}
-    dropWeigth: 1
-    itemID: 1
-    itemName: Pedro
-    rarity: 2
-    icon: {fileID: 0}
-    Porcentage: 25
-  totalItems: 2
-  totalWeigth: 4
+  banerName: 
+  items: []
+  totalItems: 0
+  totalWeigth: 0

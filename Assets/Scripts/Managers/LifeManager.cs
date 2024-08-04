@@ -13,7 +13,7 @@ public class LifeManager : MonoBehaviour,IDamageable
     private IEnumerator Start()
     {
         yield return new WaitForSecondsRealtime(0.2f);
-       myLife = Statics.playerMaxHealth;
+        myLife = Statics.playerMaxHealth;
         Debug.Log(Statics.playerMaxHealth);
     }
 

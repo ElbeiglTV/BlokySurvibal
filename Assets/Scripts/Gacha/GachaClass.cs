@@ -36,8 +36,6 @@ public class GachaBaner : ScriptableObject
     public void GetItemProbabilities()
     {
         float totalDropRate = 0f;
-
-
         foreach (var item in items)
         {
             if (item.dropWeigth < 1)
@@ -46,21 +44,12 @@ public class GachaBaner : ScriptableObject
             }
             totalDropRate += item.dropWeigth;
         }
-
-
-
-
-
         foreach (var item in items)
         {
             item.Porcentage = (item.dropWeigth / totalDropRate) * 100f; // Probabilidad en porcentaje
         }
         totalItems = items.Count;
         totalWeigth = totalDropRate;
-
-
-
-
     }
 }
 public enum Rarity
