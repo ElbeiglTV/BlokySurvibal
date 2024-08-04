@@ -42,3 +42,7 @@ T_Recursos ¬ Resources (to upgrade the house) °
 T_Oro ¬ Gold (to buy upgrades in the main menu) °
 T_Ladrillos ¬ Bricks (for gacha pulls) °
 T_Joystick ¬ Joystick (movement) °
+B_Continuar ¬ Continue °
+B_Reiniciar ¬ Restart °
+B_Menu ¬ Main Menu °
+T_GachaDesc ¬ Skin fragments °

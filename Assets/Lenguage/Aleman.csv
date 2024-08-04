@@ -36,3 +36,13 @@ T_Ad_Info ¬ Das Überspringen der Werbung gibt die Hälfte der Belohnung °
 B_Equipar ¬ Anziehen °
 T_AttackStat ¬ 25% zusätzliche Angriffsgeschwindigkeit °
 T_MiningStat ¬ 25% zusätzliche Abbaugeschwindigkeit °
+T_Pausa ¬ Pause °
+T_Vida ¬ Dein Leben °
+T_Recursos ¬ Ressourcen (um das Haus aufzuwerten) °
+T_Oro ¬ Gold (um Upgrades im Hauptmenü zu kaufen) °
+T_Ladrillos ¬ Ziegel (für Gacha-Ziehungen) °
+T_Joystick ¬ Joystick (Bewegung) °
+B_Continuar ¬ Fortsetzen °
+B_Reiniciar ¬ Neustarten °
+B_Menu ¬ Hauptmenü °
+T_GachaDesc ¬ Skin-Fragmente °

@@ -42,3 +42,7 @@ T_Recursos ¬ Recursos (para mejorar la casa) °
 T_Oro ¬ Oro (para comprar mejoras en el menu principal) °
 T_Ladrillos ¬ Ladrillos (para tiradas de gacha) °
 T_Joystick ¬ Joystick (Movimiento) °
+B_Continuar ¬ Continuar °
+B_Reiniciar ¬ Reiniciar °
+B_Menu ¬ Menu Principal °
+T_GachaDesc ¬ Fragmentos de skin °
