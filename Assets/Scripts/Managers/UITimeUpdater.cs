@@ -7,6 +7,7 @@ public class UITimeUpdater : MonoBehaviour
 {
     [SerializeField] DayNightCycle _dayNightCycle;
     private int _dayTracker = 1;
+    public int DayTracker {  get { return _dayTracker; } }
     [SerializeField] TMP_Text _days, _time;
     private int _hours = 0, _minutes = 0;
     private bool _oneTimer;

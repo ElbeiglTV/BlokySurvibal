@@ -8,11 +8,17 @@ public class GameOverCondition : MonoBehaviour
     public LifeManager playerLife;
     public SceneLoader sceneLoader;
     public UpgradeButons upgradeButons;
+    public Timer Timer;
     // Start is called before the first frame update
     void Start()
     {
         playerLife.onKill += GameOver;
         upgradeButons.OnFinishUpgrade += Win;
+        if(Timer != null) 
+        {
+            Timer.Survive += Win;
+        }
+        
     }
     public void GameOver()
     {
