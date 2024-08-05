@@ -7,6 +7,7 @@ public class PursuitAgent : SteerinAgent
 {
     //Fijar objetivo
     public Transform player;
+    public bool WaveEnemy;
 
     public Transform spawner;
 
@@ -24,7 +25,14 @@ public class PursuitAgent : SteerinAgent
 
     private void Update()
     {
-        CheckDistanceAndMove();
+        if (WaveEnemy)
+        {
+            WaveMove();
+        }
+        else
+        {
+            CheckDistanceAndMove();
+        }
     }
 
     private void CheckDistanceAndMove()
@@ -52,6 +60,30 @@ public class PursuitAgent : SteerinAgent
             Move();
             anim.SetBool("run", true);
             anim.SetBool("attack", false);
+        }
+        else
+        {
+            anim.SetBool("run", false);
+            anim.SetBool("attack", false);
+        }
+
+    }
+    private void WaveMove()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer > FlyWeightPointer.agentFlyWeight.maxDistance && WaveEnemy)
+        {
+            //Añade fuerza necesaria para perseguir al objetivo marcado
+            AddForce(Seek(player.position));
+            AvoidObstacles();
+            //ejecuta el movimiento
+            Move();
+            anim.SetBool("run", true);
+            anim.SetBool("attack", false);
+        }
+        else if (distanceToPlayer <= FlyWeightPointer.agentFlyWeight.maxDistance)
+        {
+            anim.SetBool("attack", true);
         }
         else
         {
