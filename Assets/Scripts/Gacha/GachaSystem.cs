@@ -32,21 +32,28 @@ public class GachaSystem : MonoBehaviour
                 if (Statics.GachaInventory.ContainsKey(item.itemID))
                 {
                     Statics.GachaInventory.Set(item.itemID, Statics.GachaInventory.Get(item.itemID) + 1);
+                    Debug.Log("Has obtenido "+item.itemName+" (" + item.rarity + ")"+" (Item duplicado)");
                 }
                 else
                 {
                     Statics.GachaInventory.Add(item.itemID, 1);
+                    Debug.Log("Has obtenido " + item.itemName + " ("+item.rarity+")");
                 }
             }
         }
 
 
-         // Esto no debería ocurrir si las tasas están bien configuradas
+        // Esto no debería ocurrir si las tasas están bien configuradas
     }
     public void GetRandomItem(int banerInt)
     {
         float totalDropRate = 0f;
 
+        if (banerInt >= gachaBaner.Count)
+        {
+            Debug.LogError("Baner no encontrado");
+            return;
+        }
 
         foreach (var item in gachaBaner[banerInt].items)
         {
