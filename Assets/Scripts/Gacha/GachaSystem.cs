@@ -86,7 +86,6 @@ public class GachaSystem : MonoBehaviour
         {
             return;
         }
-       Statics.currency -= 50;
         for (int i = 0; i < 10; i++)
         {
             GetRandomItem(baner);

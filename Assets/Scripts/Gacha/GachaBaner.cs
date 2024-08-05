@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [CreateAssetMenu(fileName = "Baner", menuName = "NewBaner")]
 public class GachaBaner : ScriptableObject
 {
     public string banerName;
     public List<GachaItem> items = new List<GachaItem>();
     [Header("Utility Info")]
-    [InspectorReadOnly] public int totalItems;
-    [InspectorReadOnly] public float totalWeigth;
+   public int totalItems;
+     public float totalWeigth;
 
     private void OnValidate()
     {

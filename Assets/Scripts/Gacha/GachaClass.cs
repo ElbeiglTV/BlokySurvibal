@@ -16,7 +16,7 @@ public class GachaItem
     [Tooltip("Icono de el item (se mostrara en la UI)")] public Sprite icon;
 
     [Header("ItemInfo")]
-    [InspectorReadOnly] public float Porcentage;
+     public float Porcentage;
 }
 
 
