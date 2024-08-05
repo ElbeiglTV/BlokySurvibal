@@ -19,8 +19,8 @@ public class StaticsData
             playerMaxHealth = Statics.playerMaxHealth;
             playerBaseDamage = Statics.playerBaseDamage;
             GachaInventory = Statics.GachaInventory;
-            
-            
+            currentSkin = Statics.currentSkin;
+
         }
         else
         {
@@ -37,7 +37,7 @@ public class StaticsData
             playerMaxHealth = 100;
             playerBaseDamage = 0;
             GachaInventory = new SerialisedDictionary<int, int>();
-
+            currentSkin = Skin.Standard;
         }
     }
     public void ActualizeStatics()
@@ -55,6 +55,7 @@ public class StaticsData
         Statics.playerMaxHealth = playerMaxHealth;
         Statics.playerBaseDamage = playerBaseDamage;
         Statics.GachaInventory = GachaInventory;
+        Statics.currentSkin = currentSkin;
 
     }
 
@@ -72,5 +73,5 @@ public class StaticsData
     public float playerMaxHealth = 100;
     public int playerBaseDamage = 0;
     public SerialisedDictionary<int, int> GachaInventory = new SerialisedDictionary<int, int>();
-
+    public Skin currentSkin = Skin.Standard;
 }
