@@ -141,7 +141,7 @@ Material:
     - _ZWriteControl: 1
     m_Colors:
     - _PosMin: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: 38.934746, g: 6.739594, b: 22.999914, a: 0}
-    - _Position_1: {r: 38.934746, g: 7.500002, b: 24.044563, a: 0}
+    - _Position: {r: 31.999878, g: 7.9009037, b: 34.99441, a: 0}
+    - _Position_1: {r: 15.999886, g: 7.3123536, b: 39.949123, a: 0}
     - _Position_2: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

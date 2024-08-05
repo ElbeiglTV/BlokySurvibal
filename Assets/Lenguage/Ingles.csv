@@ -47,3 +47,7 @@ B_Reiniciar ¬ Restart °
 B_Menu ¬ Main Menu °
 T_GachaDesc ¬ Skin fragments °
 T_Warning ¬ Not enough stamina °
+T_Arbol ¬ Stay still in front of the tree to chop °
+T_Piedra ¬ Stay still in front of the rock to mine °
+T_Enemigo ¬ Stay still in front of the enemy to attack °
+T_Yunque ¬ Upgrade the house °

@@ -10,13 +10,13 @@ public class StaminaRecharge : MonoBehaviour
         else Statics.Stamina = Statics.MaxStamina;
     }
 
-    public void BrickCharge()
+    public void BrickCharge(int value)
     {
-        Statics.currency += 10;
+        Statics.currency += value;
     }
 
-    public void GoldCharge()
+    public void GoldCharge(int value)
     {
-        Statics.currency += 100;
+        Statics.currency += value;
     }
 }

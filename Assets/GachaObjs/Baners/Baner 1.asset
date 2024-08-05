@@ -12,14 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a2a84fd990dce4aa4ad774553a9aef, type: 3}
   m_Name: Baner 1
   m_EditorClassIdentifier: 
-  banerName: 
+  banerName: Character
   items:
   - Item: {fileID: 0}
-    dropWeigth: 1
+    dropWeigth: 2
     itemID: 1
-    itemName: Part 1
-    rarity: 0
+    itemName: Worker
+    rarity: 1
     icon: {fileID: 0}
-    Porcentage: 100
-  totalItems: 1
-  totalWeigth: 1
+    Porcentage: 66.666664
+  - Item: {fileID: 0}
+    dropWeigth: 1
+    itemID: 2
+    itemName: Archer
+    rarity: 2
+    icon: {fileID: 0}
+    Porcentage: 33.333332
+  totalItems: 2
+  totalWeigth: 3

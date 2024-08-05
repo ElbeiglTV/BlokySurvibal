@@ -12,6 +12,7 @@ public static class Statics
     public static int Stamina = default;
     public static int MaxStamina = 20;
     public static SerialisedDictionary<int,int> GachaInventory = new SerialisedDictionary<int, int>();
+    public static Skin currentSkin = Skin.Standard;
 
     #region UserVars
     public static bool FirstTime = true;
@@ -51,6 +52,7 @@ public static class Statics
         playerMaxHealth = 100;
         playerBaseDamage = 0;
         GachaInventory.Clear();
+        currentSkin = Skin.Standard;
 
     }
 }
