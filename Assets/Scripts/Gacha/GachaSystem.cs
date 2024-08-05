@@ -12,7 +12,7 @@ public class GachaSystem : MonoBehaviour
         {
             return;
         }
-
+        Statics.currency -= 5;
         float totalDropRate = 0f;
         foreach (var item in baner.items)
         {
@@ -86,7 +86,7 @@ public class GachaSystem : MonoBehaviour
         {
             return;
         }
-
+       Statics.currency -= 50;
         for (int i = 0; i < 10; i++)
         {
             GetRandomItem(baner);

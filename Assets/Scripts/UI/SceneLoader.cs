@@ -15,6 +15,8 @@ public class SceneLoader : MonoBehaviour
             warning.SetActive(true);
             return;
         }
+        Statics.Stamina -= 2;
+        SaveSystem.instance.Save();
         SceneManager.LoadSceneAsync(sceneName);
     }
     public void LoadAndCheckFirsTimeScene(string sceneName)
