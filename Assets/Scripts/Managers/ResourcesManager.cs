@@ -22,6 +22,8 @@ public class ResourcesManager : MonoBehaviour
         WoodUi.text = Statics.wood.ToString();
         StoneUi.text = Statics.stone.ToString();
         GoldUi.text = Statics.gold.ToString();
+        CurrencyUi.text = Statics.currency.ToString();
+
     }
     #region ResourcesGeter/Seters;
     public int wood
@@ -100,6 +102,14 @@ public class ResourcesManager : MonoBehaviour
             if (Statics.currency + value <= 0)
             {
                 Statics.currency = 0;
+            }
+            else
+            {
+                Statics.currency += value;
+                if (CurrencyUi != null)
+                {
+                    CurrencyUi.text = Statics.currency.ToString();
+                }
             }
             //if (_currency + value >= maxValue)
             //{
