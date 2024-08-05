@@ -27,9 +27,13 @@ public class GameOverCondition : MonoBehaviour
         {
             PlayerPrefs.SetInt("Level1",1);
         }
-        else
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             PlayerPrefs.SetInt("Level2", 1);
+        }
+        else 
+        {
+            PlayerPrefs.SetInt("Level3", 1);
         }
         Debug.Log("You Win");
         Statics.ResetBasicResources();

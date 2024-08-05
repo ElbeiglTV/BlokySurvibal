@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(CharacterController)), SelectionBase]
@@ -15,6 +16,7 @@ public class UserModel : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         moveSystem.characterController = _characterController;
+
     }
 
     // Update is called once per frame

@@ -6,6 +6,7 @@ public class LevelButtonColorChanger : MonoBehaviour
     public Color BlockedColor, CurrentColor, CompletedColor;
     public Button buttonlevl1;
     public Button buttonlevl2;
+    public Button buttonlevl3;
 
 
     private void Update()
@@ -20,16 +21,32 @@ public class LevelButtonColorChanger : MonoBehaviour
         else
         {
             ChangeColor(buttonlevl1, CurrentColor);
+            ChangeColor(buttonlevl2, BlockedColor);
+            buttonlevl2.interactable = false;
         }
 
         if (PlayerPrefs.HasKey("Level2") && PlayerPrefs.GetInt("Level2") == 1)
         {
             ChangeColor(buttonlevl2, CompletedColor);
+            ChangeColor(buttonlevl3, CurrentColor);
+            buttonlevl3.interactable = true;
+
         }
         else
         {
             ChangeColor(buttonlevl2, CurrentColor);
+            ChangeColor(buttonlevl3, BlockedColor);
+            buttonlevl3.interactable = false;
         }
+        if (PlayerPrefs.HasKey("Level3") && PlayerPrefs.GetInt("Level3") == 1)
+        {
+            ChangeColor(buttonlevl3, CompletedColor);
+        }
+        else
+        {
+            ChangeColor(buttonlevl3, CurrentColor);
+        }
+
     }
 
 

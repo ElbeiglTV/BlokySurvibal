@@ -46,6 +46,7 @@ public class SaveSystem : MonoBehaviour
     {
         staticsData = new StaticsData(false);
         PlayerPrefs.DeleteKey("StaticsData");
+        PlayerPrefs.DeleteAll();
         staticsData.ActualizeStatics();
         Statics.Reset();
     }
