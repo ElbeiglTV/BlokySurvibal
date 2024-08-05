@@ -125,10 +125,10 @@ Material:
     - _Color_Brightness_Reduction: 5.48
     - _Cull: 2
     - _DstBlend: 10
-    - _Intencity: 1
+    - _Intencity: 8
     - _QueueControl: 1
     - _QueueOffset: 0
-    - _Radius: 1.5
+    - _Radius: 2.889131
     - _Radius_1: 2
     - _Radius_2: 1
     - _ReceiveShadows: 1
@@ -141,7 +141,7 @@ Material:
     - _ZWriteControl: 1
     m_Colors:
     - _PosMin: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: 38.97754, g: 5.8814425, b: 21.999916, a: 0}
-    - _Position_1: {r: 38.977543, g: 6.500001, b: 23.244919, a: 0}
+    - _Position: {r: 29.51986, g: 9.000002, b: 31.324697, a: 0}
+    - _Position_1: {r: 29.51986, g: 5.0660887, b: 38.99992, a: 0}
     - _Position_2: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

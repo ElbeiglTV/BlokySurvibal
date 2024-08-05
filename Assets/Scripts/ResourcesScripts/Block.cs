@@ -9,7 +9,7 @@ public class Block : MonoBehaviour
         UserModel user;
         if (other.TryGetComponent(out user))
         {
-           ResourcesManager.instance.currency = 10;
+           ResourcesManager.instance.currency = 50;
             Destroy(gameObject);
         }
     }
