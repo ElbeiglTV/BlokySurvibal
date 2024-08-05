@@ -6,7 +6,8 @@ public class Block : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        UserModel user;
+        if (other.TryGetComponent(out user))
         {
            ResourcesManager.instance.currency = 10;
             Destroy(gameObject);
