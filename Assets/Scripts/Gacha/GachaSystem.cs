@@ -8,6 +8,11 @@ public class GachaSystem : MonoBehaviour
     // Método para obtener un ítem al azar basado en la tasa de obtención
     public void GetRandomItem(GachaBaner baner)
     {
+        if (Statics.currency < 5)
+        {
+            return;
+        }
+
         float totalDropRate = 0f;
         foreach (var item in baner.items)
         {
@@ -74,6 +79,18 @@ public class GachaSystem : MonoBehaviour
         }
 
     }
+    public void GetRandomItemXTen(GachaBaner baner)
+    {
 
+       if (Statics.currency < 50)
+        {
+            return;
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            GetRandomItem(baner);
+        }
+    }
 
 }
